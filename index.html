@@ -866,7 +866,17 @@
   .about-content {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 4rem 2rem;
+    padding: 4rem 2rem 2rem;
+  }
+
+  .about-full-section {
+    padding: 2.5rem 2rem 3rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .about-full-section .about-section-title {
+    padding: 0 2rem;
   }
 
   .mission-block {
@@ -959,15 +969,15 @@
 
   .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 4rem;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 1rem;
   }
 
   .team-card {
     background: var(--cream);
     border-radius: 20px;
-    padding: 2rem;
+    padding: 2rem 1.5rem;
     border: 2px solid var(--border);
     text-align: center;
     transition: all 0.3s;
@@ -1012,28 +1022,32 @@
 
   .providers-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 3rem;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1rem;
   }
 
   .provider-card {
     background: var(--cream);
     border-radius: 16px;
-    padding: 1.5rem;
+    padding: 1.5rem 2rem;
     border: 2px solid var(--border);
-    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
     transition: all 0.2s;
   }
 
   .provider-card:hover {
     border-color: var(--orange);
     transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(45,80,22,0.1);
   }
 
-  .provider-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
-  .provider-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.3rem; }
-  .provider-loc { font-size: 0.8rem; color: var(--text-muted); }
+  .provider-icon { font-size: 2.5rem; flex-shrink: 0; }
+  .provider-info { flex: 1; }
+  .provider-name { font-weight: 700; font-size: 1.1rem; margin-bottom: 0.2rem; }
+  .provider-loc { font-size: 0.85rem; color: var(--text-muted); }
 
   /* ─── ADMIN PAGE ─── */
   .admin-login-wrap {
@@ -1236,13 +1250,367 @@
 
   footer p { font-size: 0.85rem; line-height: 1.6; }
 
-  /* RESPONSIVE */
+  /* TEAM PHOTO PLACEHOLDER */
+  .team-avatar-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1rem;
+    border: 3px solid var(--border);
+    display: block;
+    background: var(--border);
+  }
   @media (max-width: 768px) {
     .hero-content { grid-template-columns: 1fr; }
     .fruit-grid { display: none; }
     .how-cards, .mystery-boxes, .admin-grid { grid-template-columns: 1fr; }
     .waste-stats { grid-template-columns: 1fr; }
   }
+
+  @media (max-width: 768px) {
+    .checkout-body { grid-template-columns: 1fr; }
+    .co-form-row { grid-template-columns: 1fr; }
+    .co-form-row.three { grid-template-columns: 1fr 1fr; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ─── CHECKOUT PAGE ─── */
+  .checkout-page { min-height: calc(100vh - 64px); background: #f3f0ea; }
+
+  .checkout-page-header {
+    background: var(--green);
+    padding: 1.5rem 2rem;
+  }
+
+  .checkout-page-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--cream);
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  .checkout-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    color: rgba(245,240,232,0.55);
+  }
+
+  .checkout-breadcrumb .crumb-active { color: var(--yellow); font-weight: 600; }
+  .checkout-breadcrumb .sep { opacity: 0.4; }
+
+  .checkout-body {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .checkout-left { display: flex; flex-direction: column; gap: 1.25rem; }
+
+  .checkout-section {
+    background: white;
+    border-radius: 14px;
+    border: 1.5px solid var(--border);
+    overflow: hidden;
+  }
+
+  .checkout-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.4rem;
+    background: var(--cream);
+    border-bottom: 1.5px solid var(--border);
+  }
+
+  .checkout-section-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .checkout-section-body { padding: 1.4rem; }
+
+  .co-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .co-form-row.full { grid-template-columns: 1fr; }
+  .co-form-row.three { grid-template-columns: 1fr 1fr 1fr; }
+
+  .co-field { display: flex; flex-direction: column; gap: 0.35rem; }
+
+  .co-field label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+
+  .co-field input, .co-field select {
+    padding: 0.65rem 0.85rem;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text);
+    background: var(--warm-white);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .co-field input:focus, .co-field select:focus { border-color: var(--green); background: #fff; }
+
+  .delivery-options { display: flex; flex-direction: column; gap: 0.65rem; }
+
+  .delivery-option {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 1.1rem;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .delivery-option:hover { border-color: var(--green-light); background: #f4fbec; }
+  .delivery-option.selected { border-color: var(--green); background: #edf7e0; }
+  .delivery-option input[type="radio"] { accent-color: var(--green); width: 16px; height: 16px; flex-shrink: 0; }
+  .delivery-option-info { flex: 1; }
+  .delivery-option-name { font-weight: 600; font-size: 0.9rem; }
+  .delivery-option-desc { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.1rem; }
+  .delivery-option-price { font-family: 'Space Mono', monospace; font-weight: 700; color: var(--green); font-size: 0.9rem; }
+
+  .payment-methods { display: flex; gap: 0.65rem; margin-bottom: 1.25rem; }
+
+  .pay-method-btn {
+    flex: 1;
+    padding: 0.6rem 0.5rem;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: var(--warm-white);
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-muted);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+  }
+
+  .pay-method-btn.selected { border-color: var(--green); background: #edf7e0; color: var(--green); }
+
+  .card-row { position: relative; }
+  .card-icons {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 0.25rem;
+    font-size: 1rem;
+    pointer-events: none;
+  }
+
+  .secure-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.73rem;
+    color: #3d7d1e;
+    margin-top: 1rem;
+    padding: 0.55rem 0.8rem;
+    background: #edf7e0;
+    border-radius: 6px;
+    border: 1px solid #b5d98a;
+  }
+
+  .order-summary {
+    background: white;
+    border-radius: 14px;
+    border: 1.5px solid var(--border);
+    position: sticky;
+    top: 84px;
+    overflow: hidden;
+  }
+
+  .order-summary-header {
+    padding: 1rem 1.4rem;
+    background: var(--cream);
+    border-bottom: 1.5px solid var(--border);
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .order-summary-items {
+    padding: 0.75rem 1.4rem;
+    max-height: 260px;
+    overflow-y: auto;
+    border-bottom: 1.5px solid var(--border);
+  }
+
+  .summary-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid #ede8dc;
+    font-size: 0.88rem;
+  }
+
+  .summary-item:last-child { border-bottom: none; }
+  .summary-item-emoji { font-size: 1.4rem; flex-shrink: 0; }
+  .summary-item-name { flex: 1; font-weight: 500; }
+  .summary-item-price { font-family: 'Space Mono', monospace; font-size: 0.82rem; color: var(--green); font-weight: 700; }
+
+  .order-totals { padding: 0.9rem 1.4rem; border-bottom: 1.5px solid var(--border); }
+
+  .total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.88rem;
+    padding: 0.3rem 0;
+    color: var(--text-muted);
+  }
+
+  .total-row.discount { color: var(--green-mid); }
+
+  .total-row.grand {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    border-top: 1.5px solid var(--border);
+    margin-top: 0.5rem;
+    padding-top: 0.7rem;
+  }
+
+  .total-row.grand span:last-child { font-family: 'Space Mono', monospace; color: var(--green); }
+
+  .co-promo { padding: 1rem 1.4rem; border-bottom: 1.5px solid var(--border); display: flex; gap: 0.6rem; }
+  .co-promo input {
+    flex: 1;
+    padding: 0.6rem 0.85rem;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    outline: none;
+    transition: border-color 0.2s;
+    background: var(--warm-white);
+  }
+  .co-promo input:focus { border-color: var(--green); }
+  .co-promo button {
+    background: var(--green);
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .co-promo button:hover { background: var(--green-mid); }
+
+  .place-order-btn {
+    display: block;
+    width: calc(100% - 2.8rem);
+    margin: 1.2rem 1.4rem;
+    background: var(--orange);
+    color: white;
+    border: none;
+    padding: 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 10px;
+    letter-spacing: 0.3px;
+  }
+
+  .place-order-btn:hover { background: var(--orange-light); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(232,98,26,0.3); }
+
+  .co-trust {
+    padding: 0.5rem 1.4rem 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+  }
+
+  .co-trust-item { font-size: 0.7rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.3rem; }
+
+  .confirmation-wrap {
+    max-width: 580px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    text-align: center;
+  }
+
+  .confirmation-icon {
+    width: 80px;
+    height: 80px;
+    background: #d1fae5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    margin: 0 auto 1.5rem;
+    border: 3px solid #6ee7b7;
+    animation: popIn 0.45s cubic-bezier(0.175,0.885,0.32,1.275);
+  }
+
+  @keyframes popIn {
+    from { transform: scale(0); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+  }
+
+  .confirmation-wrap h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; margin-bottom: 0.75rem; }
+  .confirmation-wrap > p { color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem; }
+
+  .confirmation-details {
+    background: var(--cream);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 1.4rem;
+    text-align: left;
+    margin: 1.5rem 0;
+  }
+
+  .conf-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.88rem;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .conf-row:last-child { border-bottom: none; }
+  .conf-row span:first-child { color: var(--text-muted); }
+  .conf-row span:last-child { font-weight: 600; }
 </style>
 </head>
 <body>
@@ -1304,10 +1672,6 @@
             <div class="stat-label">Max savings</div>
           </div>
           <div class="stat">
-            <div class="stat-num">2.3T</div>
-            <div class="stat-label">Kg saved / year</div>
-          </div>
-          <div class="stat">
             <div class="stat-num">100%</div>
             <div class="stat-label">Tasty, promise</div>
           </div>
@@ -1317,22 +1681,22 @@
         <div class="fruit-grid">
           <div class="fruit-card-mini">
             <span class="fruit-emoji">🍋</span>
-            <div class="fruit-label">Lumpy Lemon</div>
+            <div class="fruit-label">Lemons</div>
             <div class="discount-tag">−40%</div>
           </div>
           <div class="fruit-card-mini">
             <span class="fruit-emoji">🍎</span>
-            <div class="fruit-label">Twisted Apple</div>
+            <div class="fruit-label">Apples</div>
             <div class="discount-tag">−55%</div>
           </div>
           <div class="fruit-card-mini">
             <span class="fruit-emoji">🥕</span>
-            <div class="fruit-label">Wonky Carrot</div>
+            <div class="fruit-label">Carrots</div>
             <div class="discount-tag">−50%</div>
           </div>
           <div class="fruit-card-mini">
             <span class="fruit-emoji">🍅</span>
-            <div class="fruit-label">Lumpy Tomato</div>
+            <div class="fruit-label">Tomatoes</div>
             <div class="discount-tag">−35%</div>
           </div>
           <div class="fruit-card-mini" style="grid-column: span 2; display: flex; align-items: center; justify-content: center; gap: 1rem;">
@@ -1491,68 +1855,55 @@
         <div class="waste-stat-desc">of global greenhouse gas emissions are caused by food waste</div>
       </div>
     </div>
+  </div>
 
-    <!-- TEAM -->
+  <!-- TEAM - full width -->
+  <div class="about-full-section">
     <h2 class="about-section-title">Meet the Team</h2>
     <div class="team-grid">
       <div class="team-card">
-        <div class="team-avatar">🌱</div>
-        <div class="team-name">Maya Okonkwo</div>
+        <img class="team-avatar-img" src="https://placehold.co/80x80/7DB54A/ffffff?text=Photo" alt="Team member photo placeholder">
+        <div class="team-name">Name Here</div>
         <div class="team-role">Co-Founder & CEO</div>
-        <div class="team-bio">Former food systems researcher turned entrepreneur. Maya spent 6 years studying supply chain waste before deciding to do something about it.</div>
+        <div class="team-bio">Former food systems researcher turned entrepreneur. Spent years studying supply chain waste before deciding to do something about it.</div>
       </div>
       <div class="team-card">
-        <div class="team-avatar">🚜</div>
-        <div class="team-name">Daniel Ferreira</div>
+        <img class="team-avatar-img" src="https://placehold.co/80x80/7DB54A/ffffff?text=Photo" alt="Team member photo placeholder">
+        <div class="team-name">Name Here</div>
         <div class="team-role">Co-Founder & Head of Farms</div>
-        <div class="team-bio">Third-generation farmer who grew up watching the waste. Daniel manages all our farm relationships and sourcing operations.</div>
+        <div class="team-bio">Third-generation farmer who grew up watching the waste. Manages all farm relationships and sourcing operations.</div>
       </div>
       <div class="team-card">
-        <div class="team-avatar">🛒</div>
-        <div class="team-name">Priya Sharma</div>
+        <img class="team-avatar-img" src="https://placehold.co/80x80/7DB54A/ffffff?text=Photo" alt="Team member photo placeholder">
+        <div class="team-name">Name Here</div>
         <div class="team-role">Head of Logistics</div>
-        <div class="team-bio">Former supply chain consultant who optimized delivery networks at scale. Priya ensures every box gets to you fresh and on time.</div>
+        <div class="team-bio">Former supply chain consultant who optimized delivery networks at scale. Ensures every box gets to you fresh and on time.</div>
       </div>
       <div class="team-card">
-        <div class="team-avatar">💻</div>
-        <div class="team-name">James Wu</div>
+        <img class="team-avatar-img" src="https://placehold.co/80x80/7DB54A/ffffff?text=Photo" alt="Team member photo placeholder">
+        <div class="team-name">Name Here</div>
         <div class="team-role">Head of Technology</div>
         <div class="team-bio">Full-stack developer with a passion for sustainability tech. Built the platform that powers every order and farm connection.</div>
       </div>
+      <div class="team-card">
+        <img class="team-avatar-img" src="https://placehold.co/80x80/7DB54A/ffffff?text=Photo" alt="Team member photo placeholder">
+        <div class="team-name">Name Here</div>
+        <div class="team-role">Head of Marketing</div>
+        <div class="team-bio">Brand strategist passionate about sustainable businesses. Leads the voice and community behind UglyRipe across all channels.</div>
+      </div>
     </div>
+  </div>
 
-    <!-- PROVIDERS -->
+  <!-- PROVIDERS - full width -->
+  <div class="about-full-section">
     <h2 class="about-section-title">Our Produce Providers</h2>
     <div class="providers-grid">
       <div class="provider-card">
-        <div class="provider-icon">🌾</div>
-        <div class="provider-name">Sunridge Family Farms</div>
-        <div class="provider-loc">📍 Ontario, CA</div>
-      </div>
-      <div class="provider-card">
-        <div class="provider-icon">🍎</div>
-        <div class="provider-name">Brightmoor Orchards</div>
-        <div class="provider-loc">📍 British Columbia, CA</div>
-      </div>
-      <div class="provider-card">
-        <div class="provider-icon">🥦</div>
-        <div class="provider-name">Green Valley Co-op</div>
-        <div class="provider-loc">📍 Québec, CA</div>
-      </div>
-      <div class="provider-card">
-        <div class="provider-icon">🌽</div>
-        <div class="provider-name">Harvest Moon Collective</div>
-        <div class="provider-loc">📍 Manitoba, CA</div>
-      </div>
-      <div class="provider-card">
-        <div class="provider-icon">🍋</div>
-        <div class="provider-name">Citrus Glen Growers</div>
-        <div class="provider-loc">📍 Ontario, CA</div>
-      </div>
-      <div class="provider-card">
-        <div class="provider-icon">🥕</div>
-        <div class="provider-name">Rootworks Farm</div>
-        <div class="provider-loc">📍 Alberta, CA</div>
+        <div class="provider-icon">🥬</div>
+        <div class="provider-info">
+          <div class="provider-name">Crisp Produce</div>
+          <div class="provider-loc">📍 Etobicoke, ON</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1631,23 +1982,250 @@
   </div>
 </div>
 
+<!-- ═══════════════════════════ CHECKOUT PAGE ═══════════════════════════ -->
+<div id="page-checkout" class="page">
+  <!-- CHECKOUT FORM VIEW -->
+  <div id="checkout-form-view" class="checkout-page">
+    <div class="checkout-page-header">
+      <h2>Checkout</h2>
+      <div class="checkout-breadcrumb">
+        <span>Cart</span><span class="sep">›</span>
+        <span class="crumb-active">Details</span><span class="sep">›</span>
+        <span>Payment</span><span class="sep">›</span>
+        <span>Confirmation</span>
+      </div>
+    </div>
+
+    <div class="checkout-body">
+      <!-- LEFT COLUMN -->
+      <div class="checkout-left">
+
+        <!-- CONTACT -->
+        <div class="checkout-section">
+          <div class="checkout-section-header">
+            <h3>👤 Contact Information</h3>
+          </div>
+          <div class="checkout-section-body">
+            <div class="co-form-row">
+              <div class="co-field">
+                <label>First Name</label>
+                <input type="text" id="co-fname" placeholder="Jane">
+              </div>
+              <div class="co-field">
+                <label>Last Name</label>
+                <input type="text" id="co-lname" placeholder="Smith">
+              </div>
+            </div>
+            <div class="co-form-row full">
+              <div class="co-field">
+                <label>Email Address</label>
+                <input type="email" id="co-email" placeholder="jane@email.com">
+              </div>
+            </div>
+            <div class="co-form-row full">
+              <div class="co-field">
+                <label>Phone Number</label>
+                <input type="tel" id="co-phone" placeholder="+1 (416) 000-0000">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SHIPPING -->
+        <div class="checkout-section">
+          <div class="checkout-section-header">
+            <h3>📦 Shipping Address</h3>
+          </div>
+          <div class="checkout-section-body">
+            <div class="co-form-row full">
+              <div class="co-field">
+                <label>Street Address</label>
+                <input type="text" id="co-address" placeholder="123 Main Street">
+              </div>
+            </div>
+            <div class="co-form-row full">
+              <div class="co-field">
+                <label>Apartment / Suite (optional)</label>
+                <input type="text" id="co-apt" placeholder="Apt 4B">
+              </div>
+            </div>
+            <div class="co-form-row three">
+              <div class="co-field">
+                <label>City</label>
+                <input type="text" id="co-city" placeholder="Toronto">
+              </div>
+              <div class="co-field">
+                <label>Province</label>
+                <select id="co-province">
+                  <option value="">Select</option>
+                  <option value="ON" selected>Ontario</option>
+                  <option value="BC">British Columbia</option>
+                  <option value="AB">Alberta</option>
+                  <option value="QC">Québec</option>
+                  <option value="MB">Manitoba</option>
+                  <option value="SK">Saskatchewan</option>
+                  <option value="NS">Nova Scotia</option>
+                </select>
+              </div>
+              <div class="co-field">
+                <label>Postal Code</label>
+                <input type="text" id="co-postal" placeholder="M5V 3A8">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DELIVERY -->
+        <div class="checkout-section">
+          <div class="checkout-section-header">
+            <h3>🚚 Delivery Method</h3>
+          </div>
+          <div class="checkout-section-body">
+            <div class="delivery-options">
+              <label class="delivery-option selected" id="del-standard">
+                <input type="radio" name="delivery" value="standard" checked onchange="selectDelivery(this)">
+                <div class="delivery-option-info">
+                  <div class="delivery-option-name">Standard Delivery</div>
+                  <div class="delivery-option-desc">3–5 business days · Tracked</div>
+                </div>
+                <div class="delivery-option-price">FREE</div>
+              </label>
+              <label class="delivery-option" id="del-express">
+                <input type="radio" name="delivery" value="express" onchange="selectDelivery(this)">
+                <div class="delivery-option-info">
+                  <div class="delivery-option-name">Express Delivery</div>
+                  <div class="delivery-option-desc">Next business day · Tracked & insured</div>
+                </div>
+                <div class="delivery-option-price">$5.99</div>
+              </label>
+              <label class="delivery-option" id="del-same">
+                <input type="radio" name="delivery" value="same" onchange="selectDelivery(this)">
+                <div class="delivery-option-info">
+                  <div class="delivery-option-name">Same-Day Delivery</div>
+                  <div class="delivery-option-desc">Order by 12 PM · Toronto area only</div>
+                </div>
+                <div class="delivery-option-price">$12.99</div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAYMENT -->
+        <div class="checkout-section">
+          <div class="checkout-section-header">
+            <h3>💳 Payment</h3>
+          </div>
+          <div class="checkout-section-body">
+            <div class="payment-methods">
+              <button class="pay-method-btn selected" id="pay-card" onclick="selectPayMethod('card')">💳 Credit Card</button>
+              <button class="pay-method-btn" id="pay-paypal" onclick="selectPayMethod('paypal')">🅿️ PayPal</button>
+              <button class="pay-method-btn" id="pay-apple" onclick="selectPayMethod('apple')">🍎 Apple Pay</button>
+            </div>
+
+            <div id="card-fields">
+              <div class="co-form-row full">
+                <div class="co-field card-row">
+                  <label>Card Number</label>
+                  <input type="text" id="co-cardnum" placeholder="1234  5678  9012  3456" maxlength="19" oninput="formatCard(this)">
+                  <div class="card-icons">💳</div>
+                </div>
+              </div>
+              <div class="co-form-row">
+                <div class="co-field">
+                  <label>Expiry Date</label>
+                  <input type="text" id="co-expiry" placeholder="MM / YY" maxlength="7" oninput="formatExpiry(this)">
+                </div>
+                <div class="co-field">
+                  <label>CVV</label>
+                  <input type="text" id="co-cvv" placeholder="•••" maxlength="4">
+                </div>
+              </div>
+              <div class="co-form-row full">
+                <div class="co-field">
+                  <label>Name on Card</label>
+                  <input type="text" id="co-cardname" placeholder="Jane Smith">
+                </div>
+              </div>
+            </div>
+
+            <div id="paypal-fields" style="display:none; text-align:center; padding: 1.5rem 0; color: var(--text-muted); font-size:0.9rem;">
+              🅿️ You'll be redirected to PayPal to complete your payment securely.
+            </div>
+
+            <div id="apple-fields" style="display:none; text-align:center; padding: 1.5rem 0; color: var(--text-muted); font-size:0.9rem;">
+              🍎 Tap "Place Order" to authenticate with Apple Pay.
+            </div>
+
+            <div class="secure-badge">
+              🔒 Your payment is encrypted with 256-bit SSL. We never store your card details.
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end checkout-left -->
+
+      <!-- RIGHT: ORDER SUMMARY -->
+      <div class="order-summary">
+        <div class="order-summary-header">🧺 Order Summary</div>
+        <div class="order-summary-items" id="co-summary-items"></div>
+        <div class="co-promo">
+          <input type="text" placeholder="Promo code" id="co-promo-input">
+          <button onclick="applyPromo()">Apply</button>
+        </div>
+        <div class="order-totals">
+          <div class="total-row"><span>Subtotal</span><span id="co-subtotal">$0.00</span></div>
+          <div class="total-row discount" id="co-discount-row" style="display:none"><span>🎉 Promo (UGLY10)</span><span id="co-discount">-$0.00</span></div>
+          <div class="total-row"><span>Delivery</span><span id="co-delivery-cost">FREE</span></div>
+          <div class="total-row"><span>HST (13%)</span><span id="co-tax">$0.00</span></div>
+          <div class="total-row grand"><span>Total</span><span id="co-grand-total">$0.00</span></div>
+        </div>
+        <button class="place-order-btn" onclick="placeOrder()">Place Order →</button>
+        <div class="co-trust">
+          <span class="co-trust-item">🔒 Secure</span>
+          <span class="co-trust-item">🔄 Easy returns</span>
+          <span class="co-trust-item">🌱 Eco-packed</span>
+        </div>
+      </div>
+
+    </div><!-- end checkout-body -->
+  </div><!-- end checkout-form-view -->
+
+  <!-- CONFIRMATION VIEW -->
+  <div id="checkout-confirm-view" style="display:none;" class="checkout-page">
+    <div class="confirmation-wrap">
+      <div class="confirmation-icon">✅</div>
+      <h2>Order Confirmed!</h2>
+      <p>Thank you for choosing imperfect produce and helping fight food waste. Your order is being picked and packed — you'll receive an email confirmation shortly.</p>
+      <div class="confirmation-details">
+        <div class="conf-row"><span>Order Number</span><span id="conf-order-num">#UR-000000</span></div>
+        <div class="conf-row"><span>Email</span><span id="conf-email">—</span></div>
+        <div class="conf-row"><span>Delivery</span><span id="conf-delivery">Standard (3–5 days)</span></div>
+        <div class="conf-row"><span>Total Charged</span><span id="conf-total">$0.00</span></div>
+      </div>
+      <button class="btn-primary" onclick="showPage('shop')" style="margin-right:0.75rem">Continue Shopping</button>
+      <button class="btn-secondary" onclick="showPage('home')" style="color:var(--text);border-color:var(--border)">Back to Home</button>
+    </div>
+  </div>
+</div>
+
+
 <footer>
   <div class="footer-logo">UglyRipe 🍋</div>
-  <p>Celebrating imperfect produce since 2022 · Fighting food waste, one wonky carrot at a time.<br>
-  Made with 💚 somewhere in Ontario, Canada</p>
+  <p>Fighting food waste, one imperfect piece of produce at a time.<br>
+  Made with 💚 in Toronto, Canada</p>
 </footer>
 
 <script>
 // ─── DATA ───
 let products = [
-  { id: 1, name: "Wonky Carrot Bundle", emoji: "🥕", desc: "Crooked, forked, and spiral-shaped carrots bursting with sweetness. 1 kg bundle.", price: 2.49, origPrice: 4.99, tag: "50% OFF · Crunchy", soldOut: false },
-  { id: 2, name: "Lopsided Lemon Pack", emoji: "🍋", desc: "Bumpy-skinned lemons with plenty of juice. Sometimes two grew into one!", price: 2.99, origPrice: 5.99, tag: "50% OFF · Juicy", soldOut: false },
-  { id: 3, name: "Lumpy Tomatoes", emoji: "🍅", desc: "Deeply ribbed and wonderfully irregular tomatoes — incredible roasted or raw.", price: 3.49, origPrice: 5.49, tag: "36% OFF · Fresh", soldOut: false },
-  { id: 4, name: "Twisted Bell Peppers", emoji: "🫑", desc: "Spiral-grown and oddly beautiful peppers in red, yellow & green. Mixed bag.", price: 4.49, origPrice: 7.99, tag: "44% OFF · Vibrant", soldOut: false },
-  { id: 5, name: "Bent Zucchini Pack", emoji: "🥒", desc: "Curved and knobbly zucchini, picked young and tender. Great for grilling.", price: 2.99, origPrice: 4.99, tag: "40% OFF · Tender", soldOut: false },
-  { id: 6, name: "Wonky Apple Bag", emoji: "🍎", desc: "Dented, russet-patched, small or two-toned apples. Delicious crunch guaranteed.", price: 3.99, origPrice: 8.99, tag: "55% OFF · Crisp", soldOut: false },
-  { id: 7, name: "Irregular Eggplant", emoji: "🍆", desc: "Conjoined twins, stubby spheres, and striped oddities — same silky flavour.", price: 3.49, origPrice: 6.99, tag: "50% OFF · Silky", soldOut: true },
-  { id: 8, name: "Knobbly Ginger Root", emoji: "🫚", desc: "Extra gnarly ginger with intense aromatics. Perfect for tea, curries, and stir-fries.", price: 1.99, origPrice: 3.99, tag: "50% OFF · Spicy", soldOut: false },
+  { id: 1, name: "Carrots", emoji: "🥕", desc: "Crooked, forked, and spiral-shaped carrots bursting with sweetness. 1 kg bundle.", price: 2.49, origPrice: 4.99, tag: "50% OFF · Crunchy", soldOut: false },
+  { id: 2, name: "Lemons", emoji: "🍋", desc: "Bumpy-skinned lemons with plenty of juice. Sometimes two grew into one!", price: 2.99, origPrice: 5.99, tag: "50% OFF · Juicy", soldOut: false },
+  { id: 3, name: "Tomatoes", emoji: "🍅", desc: "Deeply ribbed and wonderfully irregular tomatoes — incredible roasted or raw.", price: 3.49, origPrice: 5.49, tag: "36% OFF · Fresh", soldOut: false },
+  { id: 4, name: "Bell Peppers", emoji: "🫑", desc: "Spiral-grown and oddly beautiful peppers in red, yellow & green. Mixed bag.", price: 4.49, origPrice: 7.99, tag: "44% OFF · Vibrant", soldOut: false },
+  { id: 5, name: "Zucchini", emoji: "🥒", desc: "Curved and knobbly zucchini, picked young and tender. Great for grilling.", price: 2.99, origPrice: 4.99, tag: "40% OFF · Tender", soldOut: false },
+  { id: 6, name: "Apples", emoji: "🍎", desc: "Dented, russet-patched, small or two-toned apples. Delicious crunch guaranteed.", price: 3.99, origPrice: 8.99, tag: "55% OFF · Crisp", soldOut: false },
+  { id: 7, name: "Eggplant", emoji: "🍆", desc: "Conjoined, stubby, and striped varieties — same silky flavour you love.", price: 3.49, origPrice: 6.99, tag: "50% OFF · Silky", soldOut: true },
+  { id: 8, name: "Ginger Root", emoji: "🫚", desc: "Extra gnarly ginger with intense aromatics. Perfect for tea, curries, and stir-fries.", price: 1.99, origPrice: 3.99, tag: "50% OFF · Spicy", soldOut: false },
 ];
 
 let cart = [];
@@ -1755,11 +2333,123 @@ function updateCart() {
 
 function checkout() {
   if (cart.length === 0) { showToast('Your basket is empty!'); return; }
-  const total = cart.reduce((s, i) => s + i.price, 0);
+  // Close cart panel and go to checkout page
+  document.getElementById('cart-overlay').classList.remove('open');
+  document.getElementById('cart-panel').classList.remove('open');
+  showPage('checkout');
+  renderCheckoutSummary();
+}
+
+let deliveryCost = 0;
+let promoApplied = false;
+
+function renderCheckoutSummary() {
+  // Show form, hide confirmation
+  document.getElementById('checkout-form-view').style.display = 'block';
+  document.getElementById('checkout-confirm-view').style.display = 'none';
+
+  const items = document.getElementById('co-summary-items');
+  items.innerHTML = cart.map(item => `
+    <div class="summary-item">
+      <span class="summary-item-emoji">${item.emoji}</span>
+      <span class="summary-item-name">${item.name}</span>
+      <span class="summary-item-price">$${item.price.toFixed(2)}</span>
+    </div>
+  `).join('');
+  updateCheckoutTotals();
+}
+
+function updateCheckoutTotals() {
+  const subtotal = cart.reduce((s, i) => s + i.price, 0);
+  const discount = promoApplied ? subtotal * 0.1 : 0;
+  const discountedSub = subtotal - discount;
+  const tax = (discountedSub + deliveryCost) * 0.13;
+  const grand = discountedSub + deliveryCost + tax;
+
+  document.getElementById('co-subtotal').textContent = '$' + subtotal.toFixed(2);
+  document.getElementById('co-delivery-cost').textContent = deliveryCost === 0 ? 'FREE' : '$' + deliveryCost.toFixed(2);
+  document.getElementById('co-tax').textContent = '$' + tax.toFixed(2);
+  document.getElementById('co-grand-total').textContent = '$' + grand.toFixed(2);
+
+  const discRow = document.getElementById('co-discount-row');
+  if (promoApplied) {
+    discRow.style.display = 'flex';
+    document.getElementById('co-discount').textContent = '-$' + discount.toFixed(2);
+  } else {
+    discRow.style.display = 'none';
+  }
+}
+
+function selectDelivery(radio) {
+  document.querySelectorAll('.delivery-option').forEach(el => el.classList.remove('selected'));
+  radio.closest('.delivery-option').classList.add('selected');
+  if (radio.value === 'standard') deliveryCost = 0;
+  else if (radio.value === 'express') deliveryCost = 5.99;
+  else if (radio.value === 'same') deliveryCost = 12.99;
+  updateCheckoutTotals();
+}
+
+function selectPayMethod(method) {
+  document.querySelectorAll('.pay-method-btn').forEach(b => b.classList.remove('selected'));
+  document.getElementById('pay-' + method).classList.add('selected');
+  document.getElementById('card-fields').style.display = method === 'card' ? 'block' : 'none';
+  document.getElementById('paypal-fields').style.display = method === 'paypal' ? 'block' : 'none';
+  document.getElementById('apple-fields').style.display = method === 'apple' ? 'block' : 'none';
+}
+
+function applyPromo() {
+  const code = document.getElementById('co-promo-input').value.trim().toUpperCase();
+  if (code === 'UGLY10') {
+    promoApplied = true;
+    updateCheckoutTotals();
+    showToast('🎉 Promo code UGLY10 applied — 10% off!');
+  } else {
+    showToast('❌ Invalid promo code.');
+  }
+}
+
+function formatCard(input) {
+  let val = input.value.replace(/\D/g, '').substring(0, 16);
+  input.value = val.replace(/(.{4})/g, '$1  ').trim();
+}
+
+function formatExpiry(input) {
+  let val = input.value.replace(/\D/g, '').substring(0, 4);
+  if (val.length >= 3) val = val.substring(0,2) + ' / ' + val.substring(2);
+  input.value = val;
+}
+
+function placeOrder() {
+  const fname = document.getElementById('co-fname').value.trim();
+  const email = document.getElementById('co-email').value.trim();
+  const address = document.getElementById('co-address').value.trim();
+
+  if (!fname || !email || !address) {
+    showToast('⚠️ Please fill in your name, email, and address.');
+    return;
+  }
+
+  const subtotal = cart.reduce((s, i) => s + i.price, 0);
+  const discount = promoApplied ? subtotal * 0.1 : 0;
+  const tax = (subtotal - discount + deliveryCost) * 0.13;
+  const grand = subtotal - discount + deliveryCost + tax;
+  const orderNum = '#UR-' + Math.floor(100000 + Math.random() * 900000);
+  const deliveryLabels = { 0: 'Standard (3–5 days)', 5.99: 'Express (next day)', 12.99: 'Same-Day' };
+
+  document.getElementById('conf-order-num').textContent = orderNum;
+  document.getElementById('conf-email').textContent = email;
+  document.getElementById('conf-delivery').textContent = deliveryLabels[deliveryCost] || 'Standard';
+  document.getElementById('conf-total').textContent = '$' + grand.toFixed(2);
+
+  // Clear cart
   cart = [];
+  promoApplied = false;
+  deliveryCost = 0;
   updateCart();
-  toggleCart();
-  showToast(`✅ Order placed! Total: $${total.toFixed(2)} — Thank you for fighting food waste!`);
+
+  document.getElementById('checkout-form-view').style.display = 'none';
+  document.getElementById('checkout-confirm-view').style.display = 'block';
+  window.scrollTo(0, 0);
 }
 
 // ─── ADMIN ───
