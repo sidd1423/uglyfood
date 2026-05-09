@@ -31,7 +31,6 @@
     min-height: 100vh;
   }
 
-  /* NOISE TEXTURE OVERLAY */
   body::before {
     content: '';
     position: fixed;
@@ -42,7 +41,7 @@
     opacity: 0.5;
   }
 
-  /* NAV */
+  /* ─── NAV ─── */
   nav {
     position: sticky;
     top: 0;
@@ -54,23 +53,24 @@
   .nav-inner {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 1.25rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 64px;
+    height: 60px;
   }
 
   .logo {
     font-family: 'Playfair Display', serif;
     font-weight: 900;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     color: var(--cream);
     cursor: pointer;
     letter-spacing: -0.5px;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
+    flex-shrink: 0;
   }
 
   .logo span { color: var(--yellow); font-style: italic; }
@@ -89,10 +89,11 @@
     font-size: 0.9rem;
     font-weight: 500;
     cursor: pointer;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.9rem;
     border-radius: 6px;
     transition: all 0.2s;
     letter-spacing: 0.3px;
+    white-space: nowrap;
   }
 
   .nav-links button:hover, .nav-links button.active {
@@ -104,8 +105,8 @@
     background: var(--orange) !important;
     color: var(--cream) !important;
     border-radius: 8px !important;
-    padding: 0.5rem 1.2rem !important;
-    display: flex;
+    padding: 0.5rem 1rem !important;
+    display: flex !important;
     align-items: center;
     gap: 0.5rem;
     font-weight: 600 !important;
@@ -126,7 +127,84 @@
     font-weight: 700;
   }
 
-  /* PAGES */
+  .nav-right-mobile {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .cart-btn-mobile {
+    background: var(--orange);
+    color: var(--cream);
+    border: none;
+    border-radius: 8px;
+    padding: 0.45rem 0.85rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .hamburger-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+  }
+
+  .hamburger-btn span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--cream);
+    border-radius: 2px;
+    transition: all 0.25s;
+    transform-origin: center;
+  }
+
+  .hamburger-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger-btn.open span:nth-child(2) { opacity: 0; }
+  .hamburger-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-nav-drawer {
+    display: none;
+    flex-direction: column;
+    background: var(--green);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 0.75rem 1.25rem 1.25rem;
+    gap: 0.25rem;
+  }
+
+  .mobile-nav-drawer.open { display: flex; }
+
+  .mobile-nav-drawer button {
+    background: none;
+    border: none;
+    color: rgba(245,240,232,0.85);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.8rem 0.75rem;
+    border-radius: 8px;
+    text-align: left;
+    transition: all 0.2s;
+  }
+
+  .mobile-nav-drawer button:hover,
+  .mobile-nav-drawer button.active {
+    background: rgba(232,98,26,0.2);
+    color: var(--yellow);
+  }
+
+  /* ─── PAGES ─── */
   .page { display: none; animation: fadeUp 0.4s ease; }
   .page.active { display: block; }
 
@@ -146,33 +224,24 @@
     align-items: center;
   }
 
-  .hero-bg-circles {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-  }
+  .hero-bg-circles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
 
   .hero-bg-circles::before {
     content: '';
     position: absolute;
-    width: 700px;
-    height: 700px;
+    width: 700px; height: 700px;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(125,181,74,0.15) 0%, transparent 70%);
-    top: -200px;
-    right: -100px;
+    top: -200px; right: -100px;
   }
 
   .hero-bg-circles::after {
     content: '';
     position: absolute;
-    width: 500px;
-    height: 500px;
+    width: 500px; height: 500px;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(232,98,26,0.1) 0%, transparent 70%);
-    bottom: -100px;
-    left: -100px;
+    bottom: -100px; left: -100px;
   }
 
   .hero-content {
@@ -189,7 +258,7 @@
 
   .hero-text h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(3rem, 5vw, 5rem);
+    font-size: clamp(2.4rem, 5vw, 5rem);
     font-weight: 900;
     color: var(--cream);
     line-height: 1.05;
@@ -199,24 +268,20 @@
   .hero-text h1 .accent { color: var(--yellow); font-style: italic; }
 
   .hero-text p {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     color: rgba(245,240,232,0.8);
     line-height: 1.7;
     margin-bottom: 2rem;
     max-width: 440px;
   }
 
-  .hero-cta {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
 
   .btn-primary {
     background: var(--orange);
     color: var(--cream);
     border: none;
-    padding: 0.9rem 2rem;
+    padding: 0.9rem 1.75rem;
     font-family: 'DM Sans', sans-serif;
     font-size: 1rem;
     font-weight: 600;
@@ -236,7 +301,7 @@
     background: transparent;
     color: var(--cream);
     border: 2px solid rgba(245,240,232,0.4);
-    padding: 0.9rem 2rem;
+    padding: 0.9rem 1.75rem;
     font-family: 'DM Sans', sans-serif;
     font-size: 1rem;
     font-weight: 600;
@@ -245,49 +310,16 @@
     transition: all 0.2s;
   }
 
-  .btn-secondary:hover {
-    border-color: var(--yellow);
-    color: var(--yellow);
-  }
+  .btn-secondary:hover { border-color: var(--yellow); color: var(--yellow); }
 
-  .hero-stats {
-    display: flex;
-    gap: 2rem;
-    margin-top: 2.5rem;
-  }
+  .hero-stats { display: flex; gap: 2rem; margin-top: 2.5rem; flex-wrap: wrap; }
+  .stat { text-align: left; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--yellow); }
+  .stat-label { font-size: 0.8rem; color: rgba(245,240,232,0.6); text-transform: uppercase; letter-spacing: 0.5px; }
 
-  .stat {
-    text-align: left;
-  }
+  .hero-visual { display: flex; justify-content: center; align-items: center; position: relative; }
 
-  .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--yellow);
-  }
-
-  .stat-label {
-    font-size: 0.8rem;
-    color: rgba(245,240,232,0.6);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  /* FRUIT ILLUSTRATION */
-  .hero-visual {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
-
-  .fruit-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    transform: rotate(-3deg);
-  }
+  .fruit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; transform: rotate(-3deg); }
 
   .fruit-card-mini {
     background: rgba(245,240,232,0.1);
@@ -300,203 +332,118 @@
   }
 
   .fruit-card-mini:hover { transform: scale(1.05) rotate(2deg); }
-
   .fruit-emoji { font-size: 2.5rem; display: block; margin-bottom: 0.4rem; }
+  .fruit-label { font-size: 0.7rem; color: rgba(245,240,232,0.7); font-family: 'Space Mono', monospace; }
+  .discount-tag { background: var(--yellow); color: var(--brown); border-radius: 100px; padding: 0.2rem 0.5rem; font-size: 0.65rem; font-weight: 700; margin-top: 0.3rem; display: inline-block; }
 
-  .fruit-label {
-    font-size: 0.7rem;
-    color: rgba(245,240,232,0.7);
-    font-family: 'Space Mono', monospace;
-  }
-
-  .discount-tag {
-    background: var(--yellow);
-    color: var(--brown);
-    border-radius: 100px;
-    padding: 0.2rem 0.5rem;
-    font-size: 0.65rem;
-    font-weight: 700;
-    margin-top: 0.3rem;
-    display: inline-block;
-  }
-
-  /* FEATURES STRIP */
   .features-strip {
     background: var(--orange);
-    padding: 1.2rem 2rem;
+    padding: 1rem 1.5rem;
     display: flex;
     justify-content: center;
-    gap: 3rem;
+    gap: 1.5rem;
     flex-wrap: wrap;
   }
 
-  .feature-item {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    color: var(--cream);
-    font-size: 0.9rem;
-    font-weight: 500;
-  }
+  .feature-item { display: flex; align-items: center; gap: 0.5rem; color: var(--cream); font-size: 0.85rem; font-weight: 500; white-space: nowrap; }
 
-  /* HOW IT WORKS */
-  .how-section {
-    max-width: 1200px;
-    margin: 5rem auto;
-    padding: 0 2rem;
-    text-align: center;
-  }
+  .how-section { max-width: 1200px; margin: 4rem auto; padding: 0 1.5rem; text-align: center; }
+  .section-label { font-family: 'Space Mono', monospace; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 0.75rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.75rem, 3vw, 3rem); font-weight: 700; color: var(--text); margin-bottom: 2.5rem; }
 
-  .section-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 0.75rem;
-  }
-
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 3vw, 3rem);
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 3rem;
-  }
-
-  .how-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
+  .how-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 
   .how-card {
     background: var(--cream);
     border-radius: 20px;
-    padding: 2rem;
+    padding: 1.75rem;
     border: 2px solid var(--border);
     position: relative;
     text-align: left;
     transition: all 0.3s;
   }
 
-  .how-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--green-light);
-    box-shadow: 0 16px 40px rgba(45,80,22,0.1);
-  }
-
-  .how-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 4rem;
-    font-weight: 900;
-    color: var(--green-light);
-    opacity: 0.3;
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
-
-  .how-card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: var(--text);
-  }
-
-  .how-card p {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
+  .how-card:hover { transform: translateY(-6px); border-color: var(--green-light); box-shadow: 0 16px 40px rgba(45,80,22,0.1); }
+  .how-num { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; color: var(--green-light); opacity: 0.3; line-height: 1; margin-bottom: 0.5rem; }
+  .how-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text); }
+  .how-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
 
   /* ─── SHOP PAGE ─── */
+  /* Full green background for the whole shop page */
+  #page-shop {
+    background: var(--green);
+    min-height: 100vh;
+  }
+
   .shop-header {
     background: var(--cream);
-    border-bottom: 2px solid var(--border);
-    padding: 3rem 2rem 2rem;
+    border-bottom: 3px solid var(--orange);
+    padding: 2.5rem 1.5rem 1.5rem;
   }
 
-  .shop-header-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+  .shop-header-inner { max-width: 1200px; margin: 0 auto; }
 
-  .shop-header h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    font-weight: 900;
-    margin-bottom: 0.5rem;
-  }
+  .shop-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; margin-bottom: 0.4rem; }
+  .shop-header p { color: var(--text-muted); font-size: 1rem; }
 
-  .shop-header p {
-    color: var(--text-muted);
-    font-size: 1.05rem;
-  }
-
-  .shop-tabs {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 1.5rem;
-  }
+  .shop-tabs { display: flex; gap: 0.5rem; margin-top: 1.25rem; flex-wrap: wrap; }
 
   .tab-btn {
     background: none;
     border: 2px solid var(--border);
-    padding: 0.6rem 1.4rem;
+    padding: 0.55rem 1.2rem;
     border-radius: 100px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 500;
     cursor: pointer;
     color: var(--text-muted);
     transition: all 0.2s;
+    white-space: nowrap;
   }
 
-  .tab-btn.active, .tab-btn:hover {
-    background: var(--green);
-    color: var(--cream);
-    border-color: var(--green);
-  }
+  .tab-btn.active, .tab-btn:hover { background: var(--green); color: var(--cream); border-color: var(--green); }
 
   .shop-body {
     max-width: 1200px;
-    margin: 3rem auto;
-    padding: 0 2rem;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 3rem;
   }
 
+  /* ── PRODUCT GRID: desktop → responsive columns ── */
   .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.1rem;
   }
 
   .product-card {
     background: var(--cream);
-    border-radius: 20px;
-    overflow: hidden;
+    border-radius: 18px;
     border: 2px solid var(--border);
-    transition: all 0.3s;
+    overflow: hidden;
+    transition: all 0.25s;
+    display: flex;
+    flex-direction: column;
     position: relative;
   }
 
   .product-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 50px rgba(45,80,22,0.12);
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.25);
     border-color: var(--green-light);
   }
 
-  .product-card.sold-out { opacity: 0.65; }
+  .product-card.sold-out { opacity: 0.6; }
 
   .sold-out-banner {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 0.65rem; right: 0.65rem;
     background: #8B1A1A;
     color: white;
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     font-weight: 700;
-    padding: 0.3rem 0.7rem;
+    padding: 0.2rem 0.55rem;
     border-radius: 100px;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -505,88 +452,52 @@
 
   .product-img-area {
     background: linear-gradient(135deg, #e8f5d0 0%, #d4e8b0 100%);
-    height: 180px;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 5rem;
+    font-size: 3.2rem;
     position: relative;
-    overflow: hidden;
+    flex-shrink: 0;
   }
 
-  .product-img-area::after {
-    content: attr(data-tag);
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background: var(--orange);
-    color: white;
-    font-size: 0.65rem;
-    font-weight: 700;
-    padding: 0.25rem 0.65rem;
-    border-radius: 100px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
 
   .product-info {
-    padding: 1.2rem;
+    padding: 0.85rem 1rem 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
   }
 
-  .product-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 0.3rem;
-    color: var(--text);
-  }
-
-  .product-desc {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-    margin-bottom: 1rem;
-  }
+  .product-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--text); }
+  .product-desc { font-size: 0.75rem; color: var(--text-muted); line-height: 1.45; flex: 1; }
 
   .product-pricing {
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-
-  .price-group {
-    display: flex;
-    align-items: baseline;
     gap: 0.5rem;
+    margin-top: 0.3rem;
   }
 
-  .price-now {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--green);
-    font-family: 'Space Mono', monospace;
-  }
-
-  .price-was {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    text-decoration: line-through;
-    font-family: 'Space Mono', monospace;
-  }
+  .price-group { display: flex; align-items: baseline; gap: 0.4rem; }
+  .price-now { font-size: 1.1rem; font-weight: 700; color: var(--green); font-family: 'Space Mono', monospace; }
+  .price-was { font-size: 0.78rem; color: var(--text-muted); text-decoration: line-through; font-family: 'Space Mono', monospace; }
 
   .add-btn {
     background: var(--green);
     color: var(--cream);
     border: none;
-    width: 36px;
-    height: 36px;
+    width: 36px; height: 36px;
     border-radius: 10px;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.2s;
+    flex-shrink: 0;
   }
 
   .add-btn:hover { background: var(--green-mid); transform: scale(1.1); }
@@ -596,43 +507,21 @@
   .mystery-section { padding-top: 1rem; }
 
   .mystery-intro {
-    background: linear-gradient(135deg, var(--green) 0%, var(--green-mid) 100%);
-    border-radius: 24px;
-    padding: 2.5rem;
+    background: linear-gradient(135deg, rgba(245,240,232,0.15) 0%, rgba(245,240,232,0.05) 100%);
+    border: 2px solid rgba(245,240,232,0.2);
+    border-radius: 20px;
+    padding: 2rem;
     color: var(--cream);
-    margin-bottom: 2rem;
+    margin-bottom: 1.75rem;
     position: relative;
     overflow: hidden;
   }
 
-  .mystery-intro::before {
-    content: '🎁';
-    position: absolute;
-    right: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 6rem;
-    opacity: 0.15;
-  }
+  .mystery-intro::before { content: '🎁'; position: absolute; right: 1.5rem; top: 50%; transform: translateY(-50%); font-size: 5rem; opacity: 0.15; }
+  .mystery-intro h2 { font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .mystery-intro p { opacity: 0.85; max-width: 500px; line-height: 1.6; font-size: 0.95rem; }
 
-  .mystery-intro h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-
-  .mystery-intro p {
-    opacity: 0.85;
-    max-width: 500px;
-    line-height: 1.6;
-  }
-
-  .mystery-boxes {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
+  .mystery-boxes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
 
   .mystery-box-card {
     background: var(--cream);
@@ -643,70 +532,36 @@
     cursor: pointer;
   }
 
-  .mystery-box-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 50px rgba(45,80,22,0.12);
-  }
-
+  .mystery-box-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.25); }
   .mystery-box-card.selected { border-color: var(--orange); box-shadow: 0 0 0 4px rgba(232,98,26,0.15); }
 
-  .box-header {
-    padding: 2rem;
-    text-align: center;
-    position: relative;
-  }
-
+  .box-header { padding: 1.75rem; text-align: center; position: relative; }
   .box-sm .box-header { background: linear-gradient(135deg, #FEF3C7, #FDE68A); }
   .box-md .box-header { background: linear-gradient(135deg, #D1FAE5, #A7F3D0); }
   .box-lg .box-header { background: linear-gradient(135deg, #DBEAFE, #BFDBFE); }
+  .box-emoji { font-size: 3.5rem; display: block; margin-bottom: 0.5rem; }
+  .box-size-label { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); }
+  .box-body { padding: 1.25rem; }
+  .box-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .box-contents { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; }
+  .box-price-row { display: flex; align-items: center; justify-content: space-between; }
 
-  .box-emoji { font-size: 4rem; display: block; margin-bottom: 0.5rem; }
-
-  .box-size-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-
-  .box-body { padding: 1.5rem; }
-
-  .box-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin-bottom: 0.3rem;
-  }
-
-  .box-contents {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    margin-bottom: 1rem;
-    line-height: 1.5;
-  }
-
-  .box-price-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  /* CART PANEL */
+  /* ─── CART SIDE PANEL ─── */
   .cart-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(30,20,8,0.5);
+    background: rgba(30,20,8,0.55);
     z-index: 200;
     display: none;
     backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
   }
 
   .cart-overlay.open { display: block; }
 
   .cart-panel {
     position: fixed;
-    right: -420px;
+    right: -440px;
     top: 0;
     width: 420px;
     height: 100vh;
@@ -715,54 +570,65 @@
     transition: right 0.35s cubic-bezier(0.4,0,0.2,1);
     display: flex;
     flex-direction: column;
-    box-shadow: -10px 0 50px rgba(0,0,0,0.2);
+    box-shadow: -10px 0 60px rgba(0,0,0,0.3);
   }
 
   .cart-panel.open { right: 0; }
 
   .cart-top {
-    padding: 1.5rem;
+    padding: 1.25rem 1.25rem 1.25rem 1.5rem;
     border-bottom: 2px solid var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: var(--green);
     color: var(--cream);
+    flex-shrink: 0;
   }
 
-  .cart-top h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-  }
+  .cart-top h2 { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
 
   .close-cart {
-    background: none;
+    background: rgba(255,255,255,0.15);
     border: none;
     color: var(--cream);
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     cursor: pointer;
-    padding: 0.25rem;
-    line-height: 1;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
   }
 
-  .cart-items { flex: 1; overflow-y: auto; padding: 1rem; }
+  .close-cart:hover { background: rgba(255,255,255,0.3); }
+
+  .cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
 
   .cart-item {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.75rem;
     padding: 0.75rem;
     background: var(--cream);
     border-radius: 12px;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.65rem;
     border: 1px solid var(--border);
+    transition: all 0.2s;
   }
 
-  .cart-item-emoji { font-size: 2rem; }
+  .cart-item:hover { border-color: var(--green-light); }
 
-  .cart-item-info { flex: 1; }
-  .cart-item-name { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.2rem; }
-  .cart-item-price { font-family: 'Space Mono', monospace; font-size: 0.85rem; color: var(--green); }
+  .cart-item-emoji { font-size: 1.9rem; flex-shrink: 0; }
+  .cart-item-info { flex: 1; min-width: 0; }
+  .cart-item-name { font-weight: 600; font-size: 0.88rem; margin-bottom: 0.2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cart-item-price { font-family: 'Space Mono', monospace; font-size: 0.82rem; color: var(--green); }
 
   .cart-item-remove {
     background: none;
@@ -771,22 +637,25 @@
     color: var(--text-muted);
     font-size: 1rem;
     transition: color 0.2s;
+    width: 32px; height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
   }
 
-  .cart-item-remove:hover { color: #8B1A1A; }
+  .cart-item-remove:hover { color: #8B1A1A; background: #FEE2E2; }
 
-  .cart-empty {
-    text-align: center;
-    padding: 3rem 1rem;
-    color: var(--text-muted);
-  }
-
+  .cart-empty { text-align: center; padding: 3rem 1rem; color: var(--text-muted); }
   .cart-empty-emoji { font-size: 3rem; margin-bottom: 1rem; }
+  .cart-empty p { line-height: 1.6; }
 
   .cart-footer {
-    padding: 1.5rem;
+    padding: 1.25rem;
     border-top: 2px solid var(--border);
     background: var(--cream);
+    flex-shrink: 0;
   }
 
   .cart-total {
@@ -794,14 +663,22 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 600;
   }
 
-  .cart-total span:last-child {
-    font-family: 'Space Mono', monospace;
-    font-size: 1.3rem;
-    color: var(--green);
+  .cart-total span:last-child { font-family: 'Space Mono', monospace; font-size: 1.2rem; color: var(--green); }
+
+  .cart-savings {
+    font-size: 0.78rem;
+    color: var(--green-mid);
+    font-weight: 600;
+    margin-bottom: 0.85rem;
+    text-align: center;
+    background: #edf7e0;
+    padding: 0.4rem 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #b5d98a;
   }
 
   .checkout-btn {
@@ -819,12 +696,21 @@
     letter-spacing: 0.3px;
   }
 
-  .checkout-btn:hover { background: var(--orange-light); }
+  .checkout-btn:hover { background: var(--orange-light); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(232,98,26,0.35); }
+
+  .cart-trust {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.75rem;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
 
   /* ─── ABOUT PAGE ─── */
   .about-hero {
     background: var(--green);
-    padding: 5rem 2rem;
+    padding: 4rem 1.5rem;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -833,786 +719,293 @@
   .about-hero::before {
     content: '';
     position: absolute;
-    width: 600px;
-    height: 600px;
+    width: 600px; height: 600px;
     background: radial-gradient(circle, rgba(125,181,74,0.2) 0%, transparent 70%);
-    top: -200px;
-    left: 50%;
+    top: -200px; left: 50%;
     transform: translateX(-50%);
   }
 
-  .about-hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.5rem, 4vw, 4.5rem);
-    font-weight: 900;
-    color: var(--cream);
-    position: relative;
-    z-index: 1;
-    margin-bottom: 1rem;
-  }
-
+  .about-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 4.5rem); font-weight: 900; color: var(--cream); position: relative; z-index: 1; margin-bottom: 1rem; }
   .about-hero h1 em { color: var(--yellow); }
+  .about-hero p { color: rgba(245,240,232,0.8); font-size: 1.05rem; max-width: 560px; margin: 0 auto; line-height: 1.7; position: relative; z-index: 1; }
 
-  .about-hero p {
-    color: rgba(245,240,232,0.8);
-    font-size: 1.1rem;
-    max-width: 560px;
-    margin: 0 auto;
-    line-height: 1.7;
-    position: relative;
-    z-index: 1;
-  }
+  .about-content { max-width: 1100px; margin: 0 auto; padding: 3rem 1.5rem; box-sizing: border-box; }
 
-  .about-content {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
-    box-sizing: border-box;
-  }
-
-  .about-full-section {
-    padding: 2.5rem 2rem 3rem;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .about-full-section .about-section-title {
-    padding: 0 2rem;
-  }
+  .about-full-section { padding: 2rem 1.5rem 2.5rem; width: 100%; box-sizing: border-box; }
 
   .mission-block {
     background: var(--cream);
-    border-radius: 28px;
-    padding: 3rem;
+    border-radius: 24px;
+    padding: 2.5rem;
     border: 2px solid var(--border);
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     position: relative;
     overflow: hidden;
     width: 100%;
     box-sizing: border-box;
   }
 
-  .mission-block::before {
-    content: '"';
-    position: absolute;
-    top: -0.5rem;
-    left: 1.5rem;
-    font-family: 'Playfair Display', serif;
-    font-size: 12rem;
-    color: var(--green-light);
-    opacity: 0.1;
-    line-height: 1;
-    pointer-events: none;
-  }
-
-  .mission-tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 1rem;
-    display: block;
-  }
-
-  .mission-block h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    color: var(--text);
-  }
-
-  .mission-block p {
-    font-size: 1.05rem;
-    color: var(--text-muted);
-    line-height: 1.8;
-  }
-
+  .mission-block::before { content: '"'; position: absolute; top: -0.5rem; left: 1.5rem; font-family: 'Playfair Display', serif; font-size: 12rem; color: var(--green-light); opacity: 0.1; line-height: 1; pointer-events: none; }
+  .mission-tag { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; display: block; }
+  .mission-block h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1.25rem; color: var(--text); }
+  .mission-block p { font-size: 1rem; color: var(--text-muted); line-height: 1.8; }
   .mission-block p + p { margin-top: 1rem; }
 
-  .waste-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin: 3rem 0;
-  }
+  .waste-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin: 2.5rem 0; }
+  .waste-stat-card { background: var(--green); border-radius: 20px; padding: 1.75rem 1.5rem; color: var(--cream); text-align: center; }
+  .waste-stat-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--yellow); line-height: 1; margin-bottom: 0.5rem; }
+  .waste-stat-desc { font-size: 0.82rem; opacity: 0.8; line-height: 1.5; }
 
-  .waste-stat-card {
-    background: var(--green);
-    border-radius: 20px;
-    padding: 2rem;
-    color: var(--cream);
-    text-align: center;
-  }
+  .about-section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1.5rem; color: var(--text); }
 
-  .waste-stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    font-weight: 900;
-    color: var(--yellow);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
-
-  .waste-stat-desc {
-    font-size: 0.85rem;
-    opacity: 0.8;
-    line-height: 1.5;
-  }
-
-  .about-section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    color: var(--text);
-  }
-
-  .team-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1.25rem;
-    margin-bottom: 1rem;
-  }
+  .team-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; margin-bottom: 1rem; }
 
   .team-card {
     background: var(--cream);
     border-radius: 20px;
-    padding: 2rem 1.5rem;
+    padding: 1.75rem 1.25rem;
     border: 2px solid var(--border);
     text-align: center;
     transition: all 0.3s;
   }
 
-  .team-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--green-light);
-    box-shadow: 0 12px 30px rgba(45,80,22,0.1);
-  }
+  .team-card:hover { transform: translateY(-4px); border-color: var(--green-light); box-shadow: 0 12px 30px rgba(45,80,22,0.1); }
 
-  .team-avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--green-light), var(--green));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    margin: 0 auto 1rem;
-    border: 3px solid var(--border);
-  }
+  .team-avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--green-light), var(--green)); display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1rem; border: 3px solid var(--border); }
+  .team-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.25rem; }
+  .team-role { font-size: 0.75rem; color: var(--orange); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.6rem; }
+  .team-bio { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
 
-  .team-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 0.25rem;
-  }
-
-  .team-role {
-    font-size: 0.8rem;
-    color: var(--orange);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 0.75rem;
-  }
-
-  .team-bio { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
-
-  .providers-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-    margin-bottom: 1rem;
-  }
+  .providers-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1rem; }
 
   .provider-card {
     background: var(--cream);
     border-radius: 16px;
-    padding: 1.5rem 2rem;
+    padding: 1.25rem 1.5rem;
     border: 2px solid var(--border);
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.25rem;
     transition: all 0.2s;
   }
 
-  .provider-card:hover {
-    border-color: var(--orange);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 28px rgba(45,80,22,0.1);
-  }
-
-  .provider-icon { font-size: 2.5rem; flex-shrink: 0; }
+  .provider-card:hover { border-color: var(--orange); transform: translateY(-3px); box-shadow: 0 10px 28px rgba(45,80,22,0.1); }
+  .provider-icon { font-size: 2.25rem; flex-shrink: 0; }
   .provider-info { flex: 1; }
-  .provider-name { font-weight: 700; font-size: 1.1rem; margin-bottom: 0.2rem; }
-  .provider-loc { font-size: 0.85rem; color: var(--text-muted); }
+  .provider-name { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.2rem; }
+  .provider-loc { font-size: 0.82rem; color: var(--text-muted); }
 
-  /* ─── ADMIN PAGE ─── */
-  .admin-login-wrap {
-    min-height: calc(100vh - 64px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    background: linear-gradient(135deg, var(--cream) 0%, var(--warm-white) 100%);
-  }
+  /* ─── CHECKOUT PAGE ─── */
+  .checkout-page { min-height: calc(100vh - 60px); background: #f3f0ea; }
 
-  .admin-login-card {
-    background: white;
-    border-radius: 24px;
-    padding: 3rem;
-    width: 100%;
-    max-width: 420px;
-    border: 2px solid var(--border);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-  }
+  .checkout-page-header { background: var(--green); padding: 1.25rem 1.5rem; }
+  .checkout-page-header h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--cream); font-weight: 700; margin-bottom: 0.3rem; }
+  .checkout-breadcrumb { display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: rgba(245,240,232,0.55); flex-wrap: wrap; }
+  .checkout-breadcrumb .crumb-active { color: var(--yellow); font-weight: 600; }
+  .checkout-breadcrumb .sep { opacity: 0.4; }
 
-  .admin-login-card h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
+  .checkout-body { max-width: 1060px; margin: 0 auto; padding: 2rem 1.25rem; display: grid; grid-template-columns: 1fr 340px; gap: 1.5rem; align-items: start; }
+  .checkout-left { display: flex; flex-direction: column; gap: 1rem; }
 
-  .admin-login-card p { color: var(--text-muted); margin-bottom: 2rem; font-size: 0.9rem; }
+  .checkout-section { background: white; border-radius: 14px; border: 1.5px solid var(--border); overflow: hidden; }
 
-  .form-group {
-    margin-bottom: 1.25rem;
-  }
+  .checkout-section-header { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.25rem; background: var(--cream); border-bottom: 1.5px solid var(--border); }
+  .checkout-section-header h3 { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
+  .checkout-section-body { padding: 1.25rem; }
 
-  .form-group label {
-    display: block;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: var(--text);
-  }
+  .co-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 0.8rem; }
+  .co-form-row.full { grid-template-columns: 1fr; }
+  .co-form-row.three { grid-template-columns: 1fr 1fr 1fr; }
+  .co-field { display: flex; flex-direction: column; gap: 0.3rem; }
+  .co-field label { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.4px; }
+  .co-field input, .co-field select { padding: 0.65rem 0.85rem; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--text); background: var(--warm-white); outline: none; transition: border-color 0.2s; -webkit-appearance: none; min-height: 44px; }
+  .co-field input:focus, .co-field select:focus { border-color: var(--green); background: #fff; }
 
-  .form-group input, .form-group select, .form-group textarea {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border: 2px solid var(--border);
-    border-radius: 10px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    background: var(--warm-white);
-    color: var(--text);
-    transition: border-color 0.2s;
-    outline: none;
-  }
+  .delivery-options { display: flex; flex-direction: column; gap: 0.6rem; }
+  .delivery-option { display: flex; align-items: center; gap: 0.9rem; padding: 0.85rem 1rem; border: 1.5px solid var(--border); border-radius: 10px; cursor: pointer; transition: all 0.2s; min-height: 52px; }
+  .delivery-option:hover { border-color: var(--green-light); background: #f4fbec; }
+  .delivery-option.selected { border-color: var(--green); background: #edf7e0; }
+  .delivery-option input[type="radio"] { accent-color: var(--green); width: 18px; height: 18px; flex-shrink: 0; }
+  .delivery-option-info { flex: 1; min-width: 0; }
+  .delivery-option-name { font-weight: 600; font-size: 0.88rem; }
+  .delivery-option-desc { font-size: 0.76rem; color: var(--text-muted); margin-top: 0.1rem; }
+  .delivery-option-price { font-family: 'Space Mono', monospace; font-weight: 700; color: var(--green); font-size: 0.88rem; white-space: nowrap; }
 
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-    border-color: var(--green);
-  }
+  .payment-methods { display: flex; gap: 0.5rem; margin-bottom: 1.1rem; flex-wrap: wrap; }
+  .pay-method-btn { flex: 1; min-width: 90px; padding: 0.6rem 0.4rem; border: 1.5px solid var(--border); border-radius: 8px; background: var(--warm-white); cursor: pointer; font-size: 0.8rem; font-weight: 600; font-family: 'DM Sans', sans-serif; color: var(--text-muted); transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 0.3rem; min-height: 44px; }
+  .pay-method-btn.selected { border-color: var(--green); background: #edf7e0; color: var(--green); }
 
-  .login-error {
-    background: #FEE2E2;
-    border: 1px solid #F87171;
-    color: #B91C1C;
-    padding: 0.75rem 1rem;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    margin-bottom: 1rem;
-    display: none;
-  }
+  .card-row { position: relative; }
+  .card-icons { position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%); display: flex; gap: 0.25rem; font-size: 1rem; pointer-events: none; }
+  .secure-badge { display: flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; color: #3d7d1e; margin-top: 1rem; padding: 0.5rem 0.75rem; background: #edf7e0; border-radius: 6px; border: 1px solid #b5d98a; line-height: 1.4; }
 
-  .admin-panel-wrap {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 2rem;
-    display: none;
-  }
+  .order-summary { background: white; border-radius: 14px; border: 1.5px solid var(--border); position: sticky; top: 80px; overflow: hidden; }
+  .order-summary-header { padding: 0.9rem 1.25rem; background: var(--cream); border-bottom: 1.5px solid var(--border); font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; }
+  .order-summary-items { padding: 0.65rem 1.25rem; max-height: 240px; overflow-y: auto; border-bottom: 1.5px solid var(--border); -webkit-overflow-scrolling: touch; }
+  .summary-item { display: flex; align-items: center; gap: 0.55rem; padding: 0.5rem 0; border-bottom: 1px solid #ede8dc; font-size: 0.85rem; }
+  .summary-item:last-child { border-bottom: none; }
+  .summary-item-emoji { font-size: 1.35rem; flex-shrink: 0; }
+  .summary-item-name { flex: 1; font-weight: 500; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .summary-item-price { font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--green); font-weight: 700; white-space: nowrap; }
 
-  .admin-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 2px solid var(--border);
-  }
+  .order-totals { padding: 0.8rem 1.25rem; border-bottom: 1.5px solid var(--border); }
+  .total-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; padding: 0.28rem 0; color: var(--text-muted); }
+  .total-row.discount { color: var(--green-mid); }
+  .total-row.grand { font-size: 1rem; font-weight: 700; color: var(--text); border-top: 1.5px solid var(--border); margin-top: 0.4rem; padding-top: 0.6rem; }
+  .total-row.grand span:last-child { font-family: 'Space Mono', monospace; color: var(--green); }
 
-  .admin-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 700;
-  }
+  .co-promo { padding: 0.9rem 1.25rem; border-bottom: 1.5px solid var(--border); display: flex; gap: 0.5rem; }
+  .co-promo input { flex: 1; padding: 0.6rem 0.85rem; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; outline: none; transition: border-color 0.2s; background: var(--warm-white); min-height: 40px; }
+  .co-promo input:focus { border-color: var(--green); }
+  .co-promo button { background: var(--green); color: white; border: none; padding: 0.6rem 0.9rem; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.8rem; cursor: pointer; white-space: nowrap; min-height: 40px; }
+  .co-promo button:hover { background: var(--green-mid); }
 
-  .admin-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-  }
+  .place-order-btn { display: block; width: calc(100% - 2.5rem); margin: 1rem 1.25rem; background: var(--orange); color: white; border: none; padding: 0.95rem; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.2s; border-radius: 10px; letter-spacing: 0.3px; min-height: 48px; }
+  .place-order-btn:hover { background: var(--orange-light); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(232,98,26,0.3); }
 
-  .admin-card {
-    background: var(--cream);
-    border-radius: 20px;
-    padding: 2rem;
-    border: 2px solid var(--border);
-  }
+  .co-trust { padding: 0.4rem 1.25rem 0.9rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .co-trust-item { font-size: 0.68rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.25rem; }
 
-  .admin-card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    color: var(--text);
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid var(--border);
-  }
+  /* ─── CONFIRMATION ─── */
+  .confirmation-wrap { max-width: 560px; margin: 3rem auto; padding: 0 1.5rem; text-align: center; }
 
-  .admin-product-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    max-height: 400px;
-    overflow-y: auto;
-  }
+  .confirmation-icon { width: 76px; height: 76px; background: #d1fae5; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.3rem; margin: 0 auto 1.25rem; border: 3px solid #6ee7b7; animation: popIn 0.45s cubic-bezier(0.175,0.885,0.32,1.275); }
 
-  .admin-product-item {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem;
-    background: white;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-  }
+  @keyframes popIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-  .admin-product-item .item-emoji { font-size: 1.5rem; }
-  .admin-product-item .item-info { flex: 1; }
-  .admin-product-item .item-name { font-weight: 600; font-size: 0.9rem; }
-  .admin-product-item .item-status {
-    font-size: 0.75rem;
-    padding: 0.2rem 0.6rem;
-    border-radius: 100px;
-    font-weight: 600;
-  }
+  .confirmation-wrap h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.2rem); font-weight: 900; margin-bottom: 0.75rem; }
+  .confirmation-wrap > p { color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem; font-size: 0.95rem; }
 
-  .status-available { background: #D1FAE5; color: #065F46; }
-  .status-soldout { background: #FEE2E2; color: #991B1B; }
+  .confirmation-details { background: var(--cream); border: 1.5px solid var(--border); border-radius: 14px; padding: 1.25rem; text-align: left; margin: 1.25rem 0; }
+  .conf-row { display: flex; justify-content: space-between; font-size: 0.85rem; padding: 0.4rem 0; border-bottom: 1px solid var(--border); gap: 1rem; }
+  .conf-row:last-child { border-bottom: none; }
+  .conf-row span:first-child { color: var(--text-muted); white-space: nowrap; }
+  .conf-row span:last-child { font-weight: 600; text-align: right; }
 
-  .admin-actions { display: flex; gap: 0.5rem; }
-
-  .action-btn {
-    background: none;
-    border: 1px solid var(--border);
-    padding: 0.3rem 0.7rem;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-family: 'DM Sans', sans-serif;
-  }
-
-  .action-btn.toggle-btn { color: var(--orange); border-color: var(--orange); }
-  .action-btn.toggle-btn:hover { background: var(--orange); color: white; }
-  .action-btn.delete-btn { color: #991B1B; border-color: #F87171; }
-  .action-btn.delete-btn:hover { background: #991B1B; color: white; }
-
+  /* ─── TOAST ─── */
   .success-toast {
     position: fixed;
-    bottom: 2rem;
+    bottom: 1.5rem;
     left: 50%;
-    transform: translateX(-50%) translateY(100px);
+    transform: translateX(-50%) translateY(120px);
     background: var(--green);
     color: var(--cream);
-    padding: 0.9rem 1.5rem;
+    padding: 0.85rem 1.4rem;
     border-radius: 12px;
     font-weight: 600;
-    font-size: 0.9rem;
-    z-index: 1000;
+    font-size: 0.88rem;
+    z-index: 9998;
     transition: transform 0.3s;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    white-space: nowrap;
+    max-width: calc(100vw - 2rem);
+    text-align: center;
+    white-space: normal;
   }
 
   .success-toast.show { transform: translateX(-50%) translateY(0); }
 
-  /* FOOTER */
-  footer {
-    background: var(--brown);
-    color: rgba(245,240,232,0.7);
-    padding: 3rem 2rem;
-    margin-top: 5rem;
-    text-align: center;
-  }
-
-  footer .footer-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 900;
-    color: var(--cream);
-    margin-bottom: 0.5rem;
-  }
-
+  /* ─── FOOTER ─── */
+  footer { background: var(--brown); color: rgba(245,240,232,0.7); padding: 2.5rem 1.5rem; margin-top: 0; text-align: center; }
+  footer .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; color: var(--cream); margin-bottom: 0.5rem; }
   footer p { font-size: 0.85rem; line-height: 1.6; }
 
-  /* TEAM PHOTO PLACEHOLDER */
-  .team-avatar-img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 0 auto 1rem;
-    border: 3px solid var(--border);
-    display: block;
-    background: var(--border);
-  }
-  @media (max-width: 768px) {
-    .hero-content { grid-template-columns: 1fr; }
+  .team-avatar-img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem; border: 3px solid var(--border); display: block; background: var(--border); }
+
+  /* ═══════════════════════════════════════════════════
+     RESPONSIVE
+  ═══════════════════════════════════════════════════ */
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .nav-right-mobile { display: flex; }
+    .hero { padding: 3.5rem 1.5rem 3rem; min-height: auto; }
+    .hero-content { grid-template-columns: 1fr; gap: 2.5rem; }
     .fruit-grid { display: none; }
-    .how-cards, .mystery-boxes, .admin-grid { grid-template-columns: 1fr; }
-    .waste-stats { grid-template-columns: 1fr; }
-  }
-
-  @media (max-width: 768px) {
-    .checkout-body { grid-template-columns: 1fr; }
-    .co-form-row { grid-template-columns: 1fr; }
+    .how-cards { grid-template-columns: 1fr; gap: 1rem; }
+    .mystery-boxes { grid-template-columns: 1fr; gap: 1rem; }
+    .waste-stats { grid-template-columns: repeat(3, 1fr); }
+    .team-grid { grid-template-columns: repeat(3, 1fr); }
+    .checkout-body { grid-template-columns: 1fr; padding: 1.5rem 1rem; }
+    .order-summary { position: static; }
     .co-form-row.three { grid-template-columns: 1fr 1fr; }
-    .team-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
-  /* ─── CHECKOUT PAGE ─── */
-  .checkout-page { min-height: calc(100vh - 64px); background: #f3f0ea; }
-
-  .checkout-page-header {
-    background: var(--green);
-    padding: 1.5rem 2rem;
+  /* Tablet: 2-col grid */
+  @media (max-width: 700px) {
+    .products-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
-  .checkout-page-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    color: var(--cream);
-    font-weight: 700;
-    margin-bottom: 0.3rem;
+  /* Phone: hamburger/list style */
+  @media (max-width: 500px) {
+    .products-grid {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .product-card {
+      flex-direction: row;
+      border-radius: 14px;
+    }
+
+    .product-img-area {
+      width: 90px;
+      height: auto;
+      min-height: 90px;
+      font-size: 2.4rem;
+      flex-shrink: 0;
+      border-radius: 0;
+    }
+
+
+    .product-info {
+      padding: 0.7rem 0.85rem;
+    }
+
+    .product-name { font-size: 0.93rem; }
+    .product-desc { font-size: 0.72rem; }
+    .price-now { font-size: 1rem; }
+    .sold-out-banner { font-size: 0.55rem; padding: 0.15rem 0.45rem; }
   }
 
-  .checkout-breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.8rem;
-    color: rgba(245,240,232,0.55);
+  @media (max-width: 600px) {
+    .hero { padding: 2.5rem 1.25rem 2.5rem; }
+    .btn-primary, .btn-secondary { padding: 0.85rem 1.4rem; font-size: 0.95rem; width: 100%; text-align: center; }
+    .hero-cta { flex-direction: column; gap: 0.75rem; }
+    .features-strip { gap: 0.75rem; padding: 0.9rem 1rem; }
+    .feature-item { font-size: 0.8rem; }
+    .how-section { margin: 2.5rem auto; padding: 0 1rem; }
+    .how-card { padding: 1.4rem; }
+    .shop-header { padding: 2rem 1rem 1.25rem; }
+    .shop-body { padding: 1.5rem 1rem 2.5rem; }
+    .mystery-intro { padding: 1.5rem; }
+    .mystery-intro::before { display: none; }
+    .mystery-intro h2 { font-size: 1.4rem; }
+    .about-hero { padding: 3rem 1.25rem; }
+    .about-content { padding: 2rem 1rem; }
+    .about-full-section { padding: 1.5rem 1rem 2rem; }
+    .mission-block { padding: 1.75rem 1.5rem; }
+    .waste-stats { grid-template-columns: 1fr; gap: 0.75rem; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+    .team-card { padding: 1.25rem 1rem; }
+    .team-avatar-img { width: 56px; height: 56px; }
+    .cart-panel { width: 100%; right: -100%; }
+    .checkout-body { padding: 1rem; gap: 1rem; }
+    .checkout-section-body { padding: 1rem; }
+    .co-form-row { grid-template-columns: 1fr; gap: 0.7rem; }
+    .co-form-row.three { grid-template-columns: 1fr 1fr; }
+    .payment-methods { flex-direction: column; }
+    .place-order-btn { min-height: 52px; font-size: 1rem; }
+    .confirmation-wrap { padding: 0 1rem; margin: 2rem auto; }
   }
 
-  .checkout-breadcrumb .crumb-active { color: var(--yellow); font-weight: 600; }
-  .checkout-breadcrumb .sep { opacity: 0.4; }
-
-  .checkout-body {
-    max-width: 1060px;
-    margin: 0 auto;
-    padding: 2.5rem 2rem;
-    display: grid;
-    grid-template-columns: 1fr 360px;
-    gap: 2rem;
-    align-items: start;
+  @media (max-width: 380px) {
+    .logo { font-size: 1.3rem; }
+    .team-grid { grid-template-columns: 1fr; }
+    .co-form-row.three { grid-template-columns: 1fr; }
   }
-
-  .checkout-left { display: flex; flex-direction: column; gap: 1.25rem; }
-
-  .checkout-section {
-    background: white;
-    border-radius: 14px;
-    border: 1.5px solid var(--border);
-    overflow: hidden;
-  }
-
-  .checkout-section-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 1.4rem;
-    background: var(--cream);
-    border-bottom: 1.5px solid var(--border);
-  }
-
-  .checkout-section-header h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .checkout-section-body { padding: 1.4rem; }
-
-  .co-form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.9rem;
-    margin-bottom: 0.9rem;
-  }
-
-  .co-form-row.full { grid-template-columns: 1fr; }
-  .co-form-row.three { grid-template-columns: 1fr 1fr 1fr; }
-
-  .co-field { display: flex; flex-direction: column; gap: 0.35rem; }
-
-  .co-field label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
-  }
-
-  .co-field input, .co-field select {
-    padding: 0.65rem 0.85rem;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    color: var(--text);
-    background: var(--warm-white);
-    outline: none;
-    transition: border-color 0.2s;
-  }
-
-  .co-field input:focus, .co-field select:focus { border-color: var(--green); background: #fff; }
-
-  .delivery-options { display: flex; flex-direction: column; gap: 0.65rem; }
-
-  .delivery-option {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.85rem 1.1rem;
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
-  .delivery-option:hover { border-color: var(--green-light); background: #f4fbec; }
-  .delivery-option.selected { border-color: var(--green); background: #edf7e0; }
-  .delivery-option input[type="radio"] { accent-color: var(--green); width: 16px; height: 16px; flex-shrink: 0; }
-  .delivery-option-info { flex: 1; }
-  .delivery-option-name { font-weight: 600; font-size: 0.9rem; }
-  .delivery-option-desc { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.1rem; }
-  .delivery-option-price { font-family: 'Space Mono', monospace; font-weight: 700; color: var(--green); font-size: 0.9rem; }
-
-  .payment-methods { display: flex; gap: 0.65rem; margin-bottom: 1.25rem; }
-
-  .pay-method-btn {
-    flex: 1;
-    padding: 0.6rem 0.5rem;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    background: var(--warm-white);
-    cursor: pointer;
-    font-size: 0.82rem;
-    font-weight: 600;
-    font-family: 'DM Sans', sans-serif;
-    color: var(--text-muted);
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.35rem;
-  }
-
-  .pay-method-btn.selected { border-color: var(--green); background: #edf7e0; color: var(--green); }
-
-  .card-row { position: relative; }
-  .card-icons {
-    position: absolute;
-    right: 0.75rem;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    gap: 0.25rem;
-    font-size: 1rem;
-    pointer-events: none;
-  }
-
-  .secure-badge {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.73rem;
-    color: #3d7d1e;
-    margin-top: 1rem;
-    padding: 0.55rem 0.8rem;
-    background: #edf7e0;
-    border-radius: 6px;
-    border: 1px solid #b5d98a;
-  }
-
-  .order-summary {
-    background: white;
-    border-radius: 14px;
-    border: 1.5px solid var(--border);
-    position: sticky;
-    top: 84px;
-    overflow: hidden;
-  }
-
-  .order-summary-header {
-    padding: 1rem 1.4rem;
-    background: var(--cream);
-    border-bottom: 1.5px solid var(--border);
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    font-weight: 700;
-  }
-
-  .order-summary-items {
-    padding: 0.75rem 1.4rem;
-    max-height: 260px;
-    overflow-y: auto;
-    border-bottom: 1.5px solid var(--border);
-  }
-
-  .summary-item {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.55rem 0;
-    border-bottom: 1px solid #ede8dc;
-    font-size: 0.88rem;
-  }
-
-  .summary-item:last-child { border-bottom: none; }
-  .summary-item-emoji { font-size: 1.4rem; flex-shrink: 0; }
-  .summary-item-name { flex: 1; font-weight: 500; }
-  .summary-item-price { font-family: 'Space Mono', monospace; font-size: 0.82rem; color: var(--green); font-weight: 700; }
-
-  .order-totals { padding: 0.9rem 1.4rem; border-bottom: 1.5px solid var(--border); }
-
-  .total-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.88rem;
-    padding: 0.3rem 0;
-    color: var(--text-muted);
-  }
-
-  .total-row.discount { color: var(--green-mid); }
-
-  .total-row.grand {
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--text);
-    border-top: 1.5px solid var(--border);
-    margin-top: 0.5rem;
-    padding-top: 0.7rem;
-  }
-
-  .total-row.grand span:last-child { font-family: 'Space Mono', monospace; color: var(--green); }
-
-  .co-promo { padding: 1rem 1.4rem; border-bottom: 1.5px solid var(--border); display: flex; gap: 0.6rem; }
-  .co-promo input {
-    flex: 1;
-    padding: 0.6rem 0.85rem;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.88rem;
-    outline: none;
-    transition: border-color 0.2s;
-    background: var(--warm-white);
-  }
-  .co-promo input:focus { border-color: var(--green); }
-  .co-promo button {
-    background: var(--green);
-    color: white;
-    border: none;
-    padding: 0.6rem 1rem;
-    border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600;
-    font-size: 0.82rem;
-    cursor: pointer;
-    white-space: nowrap;
-  }
-  .co-promo button:hover { background: var(--green-mid); }
-
-  .place-order-btn {
-    display: block;
-    width: calc(100% - 2.8rem);
-    margin: 1.2rem 1.4rem;
-    background: var(--orange);
-    color: white;
-    border: none;
-    padding: 1rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s;
-    border-radius: 10px;
-    letter-spacing: 0.3px;
-  }
-
-  .place-order-btn:hover { background: var(--orange-light); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(232,98,26,0.3); }
-
-  .co-trust {
-    padding: 0.5rem 1.4rem 1rem;
-    display: flex;
-    justify-content: center;
-    gap: 1.2rem;
-    flex-wrap: wrap;
-  }
-
-  .co-trust-item { font-size: 0.7rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.3rem; }
-
-  .confirmation-wrap {
-    max-width: 580px;
-    margin: 4rem auto;
-    padding: 0 2rem;
-    text-align: center;
-  }
-
-  .confirmation-icon {
-    width: 80px;
-    height: 80px;
-    background: #d1fae5;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-    margin: 0 auto 1.5rem;
-    border: 3px solid #6ee7b7;
-    animation: popIn 0.45s cubic-bezier(0.175,0.885,0.32,1.275);
-  }
-
-  @keyframes popIn {
-    from { transform: scale(0); opacity: 0; }
-    to   { transform: scale(1); opacity: 1; }
-  }
-
-  .confirmation-wrap h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; margin-bottom: 0.75rem; }
-  .confirmation-wrap > p { color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem; }
-
-  .confirmation-details {
-    background: var(--cream);
-    border: 1.5px solid var(--border);
-    border-radius: 14px;
-    padding: 1.4rem;
-    text-align: left;
-    margin: 1.5rem 0;
-  }
-
-  .conf-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.88rem;
-    padding: 0.4rem 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .conf-row:last-child { border-bottom: none; }
-  .conf-row span:first-child { color: var(--text-muted); }
-  .conf-row span:last-child { font-weight: 600; }
 </style>
 </head>
 <body>
@@ -1621,13 +1014,26 @@
 <nav>
   <div class="nav-inner">
     <div class="logo" onclick="showPage('home')">Ugly<span>Ripe</span> 🍋</div>
+
     <div class="nav-links">
-      <button onclick="showPage('home')" id="nav-home">Home</button>
+      <button onclick="showPage('home')" id="nav-home" class="active">Home</button>
       <button onclick="showPage('shop')" id="nav-shop">Shop</button>
       <button onclick="showPage('about')" id="nav-about">About Us</button>
-      <button onclick="showPage('admin')" id="nav-admin">Admin</button>
       <button class="cart-btn" onclick="toggleCart()">🛒 Cart <span class="cart-count" id="cart-count">0</span></button>
     </div>
+
+    <div class="nav-right-mobile">
+      <button class="cart-btn-mobile" onclick="toggleCart()">🛒 <span class="cart-count" id="cart-count-mobile">0</span></button>
+      <button class="hamburger-btn" id="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <button onclick="showPage('home'); closeMobileMenu()" id="mnav-home">🏠 Home</button>
+    <button onclick="showPage('shop'); closeMobileMenu()" id="mnav-shop">🥦 Shop</button>
+    <button onclick="showPage('about'); closeMobileMenu()" id="mnav-about">🌱 About Us</button>
   </div>
 </nav>
 
@@ -1652,11 +1058,17 @@
       <span>Total</span>
       <span id="cart-total">$0.00</span>
     </div>
+    <div class="cart-savings" id="cart-savings" style="display:none"></div>
     <button class="checkout-btn" onclick="checkout()">Checkout →</button>
+    <div class="cart-trust">
+      <span>🔒 Secure</span>
+      <span>🌱 Eco-packed</span>
+      <span>🚚 Free over $35</span>
+    </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════ HOME PAGE ═══════════════════════════ -->
+<!-- ═══════════ HOME PAGE ═══════════ -->
 <div id="page-home" class="page active">
   <section class="hero">
     <div class="hero-bg-circles"></div>
@@ -1681,32 +1093,13 @@
       </div>
       <div class="hero-visual">
         <div class="fruit-grid">
-          <div class="fruit-card-mini">
-            <span class="fruit-emoji">🍋</span>
-            <div class="fruit-label">Lemons</div>
-            <div class="discount-tag">−40%</div>
-          </div>
-          <div class="fruit-card-mini">
-            <span class="fruit-emoji">🍎</span>
-            <div class="fruit-label">Apples</div>
-            <div class="discount-tag">−55%</div>
-          </div>
-          <div class="fruit-card-mini">
-            <span class="fruit-emoji">🥕</span>
-            <div class="fruit-label">Carrots</div>
-            <div class="discount-tag">−50%</div>
-          </div>
-          <div class="fruit-card-mini">
-            <span class="fruit-emoji">🍅</span>
-            <div class="fruit-label">Tomatoes</div>
-            <div class="discount-tag">−35%</div>
-          </div>
+          <div class="fruit-card-mini"><span class="fruit-emoji">🍋</span><div class="fruit-label">Lemons</div><div class="discount-tag">−40%</div></div>
+          <div class="fruit-card-mini"><span class="fruit-emoji">🍎</span><div class="fruit-label">Apples</div><div class="discount-tag">−55%</div></div>
+          <div class="fruit-card-mini"><span class="fruit-emoji">🥕</span><div class="fruit-label">Carrots</div><div class="discount-tag">−50%</div></div>
+          <div class="fruit-card-mini"><span class="fruit-emoji">🍅</span><div class="fruit-label">Tomatoes</div><div class="discount-tag">−35%</div></div>
           <div class="fruit-card-mini" style="grid-column: span 2; display: flex; align-items: center; justify-content: center; gap: 1rem;">
             <span class="fruit-emoji">🎁</span>
-            <div>
-              <div class="fruit-label" style="color:var(--yellow); font-size: 0.8rem;">Mystery Box</div>
-              <div class="discount-tag">Surprise!</div>
-            </div>
+            <div><div class="fruit-label" style="color:var(--yellow); font-size: 0.8rem;">Mystery Box</div><div class="discount-tag">Surprise!</div></div>
           </div>
         </div>
       </div>
@@ -1725,26 +1118,14 @@
     <p class="section-label">How It Works</p>
     <h2 class="section-title">From Farm to Your Door,<br>the <em style="font-style:italic;color:var(--orange)">Ugly</em> Way</h2>
     <div class="how-cards">
-      <div class="how-card">
-        <div class="how-num">01</div>
-        <h3>Farmers Grade Their Harvest</h3>
-        <p>Supermarkets reject 20–40% of all produce based on appearance alone — not quality. We step in and buy exactly that.</p>
-      </div>
-      <div class="how-card">
-        <div class="how-num">02</div>
-        <h3>We Sort, Pack & Price It</h3>
-        <p>Our team hand-picks the best of the "rejected" batch, packs it fresh, and prices it honestly — up to 60% below retail.</p>
-      </div>
-      <div class="how-card">
-        <div class="how-num">03</div>
-        <h3>You Get Delicious Produce</h3>
-        <p>It arrives at your door tasting exactly as nature intended. Your wallet stays full. The planet thanks you.</p>
-      </div>
+      <div class="how-card"><div class="how-num">01</div><h3>Farmers Grade Their Harvest</h3><p>Supermarkets reject 20–40% of all produce based on appearance alone — not quality. We step in and buy exactly that.</p></div>
+      <div class="how-card"><div class="how-num">02</div><h3>We Sort, Pack & Price It</h3><p>Our team hand-picks the best of the "rejected" batch, packs it fresh, and prices it honestly — up to 60% below retail.</p></div>
+      <div class="how-card"><div class="how-num">03</div><h3>You Get Delicious Produce</h3><p>It arrives at your door tasting exactly as nature intended. Your wallet stays full. The planet thanks you.</p></div>
     </div>
   </section>
 </div>
 
-<!-- ═══════════════════════════ SHOP PAGE ═══════════════════════════ -->
+<!-- ═══════════ SHOP PAGE ═══════════ -->
 <div id="page-shop" class="page">
   <div class="shop-header">
     <div class="shop-header-inner">
@@ -1758,12 +1139,10 @@
   </div>
 
   <div class="shop-body">
-    <!-- PRODUCE TAB -->
     <div id="tab-produce">
       <div class="products-grid" id="products-grid"></div>
     </div>
 
-    <!-- MYSTERY BOXES TAB -->
     <div id="tab-mystery" style="display:none;">
       <div class="mystery-intro">
         <h2>🎁 The Mystery Box</h2>
@@ -1771,52 +1150,34 @@
       </div>
       <div class="mystery-boxes">
         <div class="mystery-box-card box-sm" onclick="addMysteryBox('Small', 9.99)">
-          <div class="box-header">
-            <span class="box-emoji">📦</span>
-            <div class="box-size-label">Size Small</div>
-          </div>
+          <div class="box-header"><span class="box-emoji">📦</span><div class="box-size-label">Size Small</div></div>
           <div class="box-body">
             <div class="box-name">Little Oddity</div>
             <div class="box-contents">3–4 seasonal items · Great for 1–2 people · ~2 lbs of imperfect produce</div>
             <div class="box-price-row">
-              <div class="price-group">
-                <span class="price-now">$9.99</span>
-                <span class="price-was">$18</span>
-              </div>
+              <div class="price-group"><span class="price-now">$9.99</span><span class="price-was">$18</span></div>
               <button class="add-btn" onclick="event.stopPropagation(); addMysteryBox('Small', 9.99)">+</button>
             </div>
           </div>
         </div>
         <div class="mystery-box-card box-md" onclick="addMysteryBox('Medium', 17.99)">
-          <div class="box-header">
-            <span class="box-emoji">📦</span>
-            <div class="box-size-label">Size Medium</div>
-          </div>
+          <div class="box-header"><span class="box-emoji">📦</span><div class="box-size-label">Size Medium</div></div>
           <div class="box-body">
             <div class="box-name">The Misfits</div>
             <div class="box-contents">6–8 seasonal items · Perfect for 3–4 people · ~5 lbs of imperfect produce</div>
             <div class="box-price-row">
-              <div class="price-group">
-                <span class="price-now">$17.99</span>
-                <span class="price-was">$34</span>
-              </div>
+              <div class="price-group"><span class="price-now">$17.99</span><span class="price-was">$34</span></div>
               <button class="add-btn" onclick="event.stopPropagation(); addMysteryBox('Medium', 17.99)">+</button>
             </div>
           </div>
         </div>
         <div class="mystery-box-card box-lg" onclick="addMysteryBox('Large', 29.99)">
-          <div class="box-header">
-            <span class="box-emoji">📦</span>
-            <div class="box-size-label">Size Large</div>
-          </div>
+          <div class="box-header"><span class="box-emoji">📦</span><div class="box-size-label">Size Large</div></div>
           <div class="box-body">
             <div class="box-name">The Whole Circus</div>
             <div class="box-contents">10–12 seasonal items · Feeds a whole family · ~10 lbs of imperfect produce</div>
             <div class="box-price-row">
-              <div class="price-group">
-                <span class="price-now">$29.99</span>
-                <span class="price-was">$58</span>
-              </div>
+              <div class="price-group"><span class="price-now">$29.99</span><span class="price-was">$58</span></div>
               <button class="add-btn" onclick="event.stopPropagation(); addMysteryBox('Large', 29.99)">+</button>
             </div>
           </div>
@@ -1826,7 +1187,7 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════ ABOUT PAGE ═══════════════════════════ -->
+<!-- ═══════════ ABOUT PAGE ═══════════ -->
 <div id="page-about" class="page">
   <div class="about-hero">
     <h1>Ugly is the <em>New</em> Beautiful</h1>
@@ -1848,44 +1209,17 @@
     </div>
   </div>
 
-  <!-- TEAM - full width -->
   <div class="about-full-section">
     <h2 class="about-section-title">Meet the Team</h2>
     <div class="team-grid">
-      <div class="team-card">
-        <img class="team-avatar-img" src="siddharth" alt="Team member photo placeholder">
-        <div class="team-name">Siddharth Gowthaman</div>
-        <div class="team-role">Co-Founder & CEO</div>
-        <div class="team-bio">Former food systems researcher turned entrepreneur. Spent years studying supply chain waste before deciding to do something about it.</div>
-      </div>
-      <div class="team-card">
-        <img class="team-avatar-img" src="minh" alt="Team member photo placeholder">
-        <div class="team-name">Minh Do</div>
-        <div class="team-role">Co-Founder & Head of Farms</div>
-        <div class="team-bio">Third-generation farmer who grew up watching the waste. Manages all farm relationships and sourcing operations.</div>
-      </div>
-      <div class="team-card">
-        <img class="team-avatar-img" src="aayan" alt="Team member photo placeholder">
-        <div class="team-name">Aayan Roy</div>
-        <div class="team-role">Head of Logistics</div>
-        <div class="team-bio">Former supply chain consultant who optimized delivery networks at scale. Ensures every box gets to you fresh and on time.</div>
-      </div>
-      <div class="team-card">
-        <img class="team-avatar-img" src="aryan" alt="Team member photo placeholder">
-        <div class="team-name">Aryan Ishani</div>
-        <div class="team-role">Head of Technology</div>
-        <div class="team-bio">Full-stack developer with a passion for sustainability tech. Built the platform that powers every order and farm connection.</div>
-      </div>
-      <div class="team-card">
-        <img class="team-avatar-img" src="leo" alt="Team member photo placeholder">
-        <div class="team-name">Leonidas Panagopoulos</div>
-        <div class="team-role">Head of Marketing</div>
-        <div class="team-bio">Brand strategist passionate about sustainable businesses. Leads the voice and community behind UglyRipe across all channels.</div>
-      </div>
+      <div class="team-card"><img class="team-avatar-img" src="siddharth" alt=""><div class="team-name">Siddharth Gowthaman</div><div class="team-role">Co-Founder & CEO</div><div class="team-bio">Former food systems researcher turned entrepreneur. Spent years studying supply chain waste before deciding to do something about it.</div></div>
+      <div class="team-card"><img class="team-avatar-img" src="minh" alt=""><div class="team-name">Minh Do</div><div class="team-role">Co-Founder & Head of Farms</div><div class="team-bio">Third-generation farmer who grew up watching the waste. Manages all farm relationships and sourcing operations.</div></div>
+      <div class="team-card"><img class="team-avatar-img" src="aayan" alt=""><div class="team-name">Aayan Roy</div><div class="team-role">Head of Logistics</div><div class="team-bio">Former supply chain consultant who optimized delivery networks at scale. Ensures every box gets to you fresh and on time.</div></div>
+      <div class="team-card"><img class="team-avatar-img" src="aryan" alt=""><div class="team-name">Aryan Ishani</div><div class="team-role">Head of Technology</div><div class="team-bio">Full-stack developer with a passion for sustainability tech. Built the platform that powers every order and farm connection.</div></div>
+      <div class="team-card"><img class="team-avatar-img" src="leo" alt=""><div class="team-name">Leonidas Panagopoulos</div><div class="team-role">Head of Marketing</div><div class="team-bio">Brand strategist passionate about sustainable businesses. Leads the voice and community behind UglyRipe across all channels.</div></div>
     </div>
   </div>
 
-  <!-- PROVIDERS - full width -->
   <div class="about-full-section">
     <h2 class="about-section-title">Our Produce Providers</h2>
     <div class="providers-grid">
@@ -1900,82 +1234,8 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════ ADMIN PAGE ═══════════════════════════ -->
-<div id="page-admin" class="page">
-  <!-- LOGIN FORM -->
-  <div class="admin-login-wrap" id="admin-login-wrap">
-    <div class="admin-login-card">
-      <h2>🔐 Admin Portal</h2>
-      <p>Sign in to manage products, update stock, and add new produce.</p>
-      <div class="login-error" id="login-error">Incorrect password. Try again.</div>
-      <div class="form-group">
-        <label>Username</label>
-        <input type="text" id="admin-username" placeholder="admin" value="admin">
-      </div>
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" id="admin-password" placeholder="Enter password">
-      </div>
-      <button class="btn-primary" style="width:100%" onclick="adminLogin()">Sign In →</button>
-      <p style="margin-top:1rem;font-size:0.75rem;color:var(--text-muted);text-align:center">Hint: password is <code>uglyripe2024</code></p>
-    </div>
-  </div>
-
-  <!-- ADMIN PANEL -->
-  <div class="admin-panel-wrap" id="admin-panel-wrap">
-    <div class="admin-header">
-      <div>
-        <h2>Admin Dashboard</h2>
-        <p style="color:var(--text-muted);font-size:0.9rem;margin-top:0.3rem">Manage your produce inventory</p>
-      </div>
-      <button class="btn-secondary" style="border-color:var(--border);color:var(--text-muted)" onclick="adminLogout()">Sign Out</button>
-    </div>
-
-    <div class="admin-grid">
-      <!-- ADD PRODUCT -->
-      <div class="admin-card">
-        <h3>➕ Add New Product</h3>
-        <div class="form-group">
-          <label>Product Name</label>
-          <input type="text" id="new-name" placeholder="e.g. Twisted Bell Peppers">
-        </div>
-        <div class="form-group">
-          <label>Emoji Icon</label>
-          <input type="text" id="new-emoji" placeholder="🫑">
-        </div>
-        <div class="form-group">
-          <label>Description</label>
-          <textarea id="new-desc" rows="2" placeholder="A short description of this produce..."></textarea>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-          <div class="form-group">
-            <label>Sale Price ($)</label>
-            <input type="number" id="new-price" placeholder="3.99" step="0.01" min="0">
-          </div>
-          <div class="form-group">
-            <label>Original Price ($)</label>
-            <input type="number" id="new-orig-price" placeholder="7.99" step="0.01" min="0">
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Discount Tag Label</label>
-          <input type="text" id="new-tag" placeholder="e.g. 50% OFF · Fresh Today">
-        </div>
-        <button class="btn-primary" onclick="addProduct()">Add to Shop</button>
-      </div>
-
-      <!-- MANAGE PRODUCTS -->
-      <div class="admin-card">
-        <h3>📦 Manage Products</h3>
-        <div class="admin-product-list" id="admin-product-list"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════ CHECKOUT PAGE ═══════════════════════════ -->
+<!-- ═══════════ CHECKOUT PAGE ═══════════ -->
 <div id="page-checkout" class="page">
-  <!-- CHECKOUT FORM VIEW -->
   <div id="checkout-form-view" class="checkout-page">
     <div class="checkout-page-header">
       <h2>Checkout</h2>
@@ -1988,65 +1248,27 @@
     </div>
 
     <div class="checkout-body">
-      <!-- LEFT COLUMN -->
       <div class="checkout-left">
-
-        <!-- CONTACT -->
         <div class="checkout-section">
-          <div class="checkout-section-header">
-            <h3>👤 Contact Information</h3>
-          </div>
+          <div class="checkout-section-header"><h3>👤 Contact Information</h3></div>
           <div class="checkout-section-body">
             <div class="co-form-row">
-              <div class="co-field">
-                <label>First Name</label>
-                <input type="text" id="co-fname" placeholder="Jane">
-              </div>
-              <div class="co-field">
-                <label>Last Name</label>
-                <input type="text" id="co-lname" placeholder="Smith">
-              </div>
+              <div class="co-field"><label>First Name</label><input type="text" id="co-fname" placeholder="Jane"></div>
+              <div class="co-field"><label>Last Name</label><input type="text" id="co-lname" placeholder="Smith"></div>
             </div>
-            <div class="co-form-row full">
-              <div class="co-field">
-                <label>Email Address</label>
-                <input type="email" id="co-email" placeholder="jane@email.com">
-              </div>
-            </div>
-            <div class="co-form-row full">
-              <div class="co-field">
-                <label>Phone Number</label>
-                <input type="tel" id="co-phone" placeholder="+1 (416) 000-0000">
-              </div>
-            </div>
+            <div class="co-form-row full"><div class="co-field"><label>Email Address</label><input type="email" id="co-email" placeholder="jane@email.com"></div></div>
+            <div class="co-form-row full"><div class="co-field"><label>Phone Number</label><input type="tel" id="co-phone" placeholder="+1 (416) 000-0000"></div></div>
           </div>
         </div>
 
-        <!-- SHIPPING -->
         <div class="checkout-section">
-          <div class="checkout-section-header">
-            <h3>📦 Shipping Address</h3>
-          </div>
+          <div class="checkout-section-header"><h3>📦 Shipping Address</h3></div>
           <div class="checkout-section-body">
-            <div class="co-form-row full">
-              <div class="co-field">
-                <label>Street Address</label>
-                <input type="text" id="co-address" placeholder="123 Main Street">
-              </div>
-            </div>
-            <div class="co-form-row full">
-              <div class="co-field">
-                <label>Apartment / Suite (optional)</label>
-                <input type="text" id="co-apt" placeholder="Apt 4B">
-              </div>
-            </div>
+            <div class="co-form-row full"><div class="co-field"><label>Street Address</label><input type="text" id="co-address" placeholder="123 Main Street"></div></div>
+            <div class="co-form-row full"><div class="co-field"><label>Apartment / Suite (optional)</label><input type="text" id="co-apt" placeholder="Apt 4B"></div></div>
             <div class="co-form-row three">
-              <div class="co-field">
-                <label>City</label>
-                <input type="text" id="co-city" placeholder="Toronto">
-              </div>
-              <div class="co-field">
-                <label>Province</label>
+              <div class="co-field"><label>City</label><input type="text" id="co-city" placeholder="Toronto"></div>
+              <div class="co-field"><label>Province</label>
                 <select id="co-province">
                   <option value="">Select</option>
                   <option value="ON" selected>Ontario</option>
@@ -2058,104 +1280,57 @@
                   <option value="NS">Nova Scotia</option>
                 </select>
               </div>
-              <div class="co-field">
-                <label>Postal Code</label>
-                <input type="text" id="co-postal" placeholder="M5V 3A8">
-              </div>
+              <div class="co-field"><label>Postal Code</label><input type="text" id="co-postal" placeholder="M5V 3A8"></div>
             </div>
           </div>
         </div>
 
-        <!-- DELIVERY -->
         <div class="checkout-section">
-          <div class="checkout-section-header">
-            <h3>🚚 Delivery Method</h3>
-          </div>
+          <div class="checkout-section-header"><h3>🚚 Delivery Method</h3></div>
           <div class="checkout-section-body">
             <div class="delivery-options">
               <label class="delivery-option selected" id="del-standard">
                 <input type="radio" name="delivery" value="standard" checked onchange="selectDelivery(this)">
-                <div class="delivery-option-info">
-                  <div class="delivery-option-name">Standard Delivery</div>
-                  <div class="delivery-option-desc">3–5 business days · Tracked</div>
-                </div>
+                <div class="delivery-option-info"><div class="delivery-option-name">Standard Delivery</div><div class="delivery-option-desc">3–5 business days · Tracked</div></div>
                 <div class="delivery-option-price">FREE</div>
               </label>
               <label class="delivery-option" id="del-express">
                 <input type="radio" name="delivery" value="express" onchange="selectDelivery(this)">
-                <div class="delivery-option-info">
-                  <div class="delivery-option-name">Express Delivery</div>
-                  <div class="delivery-option-desc">Next business day · Tracked & insured</div>
-                </div>
+                <div class="delivery-option-info"><div class="delivery-option-name">Express Delivery</div><div class="delivery-option-desc">Next business day · Tracked & insured</div></div>
                 <div class="delivery-option-price">$5.99</div>
               </label>
               <label class="delivery-option" id="del-same">
                 <input type="radio" name="delivery" value="same" onchange="selectDelivery(this)">
-                <div class="delivery-option-info">
-                  <div class="delivery-option-name">Same-Day Delivery</div>
-                  <div class="delivery-option-desc">Order by 12 PM · Toronto area only</div>
-                </div>
+                <div class="delivery-option-info"><div class="delivery-option-name">Same-Day Delivery</div><div class="delivery-option-desc">Order by 12 PM · Toronto area only</div></div>
                 <div class="delivery-option-price">$12.99</div>
               </label>
             </div>
           </div>
         </div>
 
-        <!-- PAYMENT -->
         <div class="checkout-section">
-          <div class="checkout-section-header">
-            <h3>💳 Payment</h3>
-          </div>
+          <div class="checkout-section-header"><h3>💳 Payment</h3></div>
           <div class="checkout-section-body">
             <div class="payment-methods">
               <button class="pay-method-btn selected" id="pay-card" onclick="selectPayMethod('card')">💳 Credit Card</button>
               <button class="pay-method-btn" id="pay-paypal" onclick="selectPayMethod('paypal')">🅿️ PayPal</button>
               <button class="pay-method-btn" id="pay-apple" onclick="selectPayMethod('apple')">🍎 Apple Pay</button>
             </div>
-
             <div id="card-fields">
-              <div class="co-form-row full">
-                <div class="co-field card-row">
-                  <label>Card Number</label>
-                  <input type="text" id="co-cardnum" placeholder="1234  5678  9012  3456" maxlength="19" oninput="formatCard(this)">
-                  <div class="card-icons">💳</div>
-                </div>
-              </div>
+              <div class="co-form-row full"><div class="co-field card-row"><label>Card Number</label><input type="text" id="co-cardnum" placeholder="1234  5678  9012  3456" maxlength="19" oninput="formatCard(this)"><div class="card-icons">💳</div></div></div>
               <div class="co-form-row">
-                <div class="co-field">
-                  <label>Expiry Date</label>
-                  <input type="text" id="co-expiry" placeholder="MM / YY" maxlength="7" oninput="formatExpiry(this)">
-                </div>
-                <div class="co-field">
-                  <label>CVV</label>
-                  <input type="text" id="co-cvv" placeholder="•••" maxlength="4">
-                </div>
+                <div class="co-field"><label>Expiry Date</label><input type="text" id="co-expiry" placeholder="MM / YY" maxlength="7" oninput="formatExpiry(this)"></div>
+                <div class="co-field"><label>CVV</label><input type="text" id="co-cvv" placeholder="•••" maxlength="4"></div>
               </div>
-              <div class="co-form-row full">
-                <div class="co-field">
-                  <label>Name on Card</label>
-                  <input type="text" id="co-cardname" placeholder="Jane Smith">
-                </div>
-              </div>
+              <div class="co-form-row full"><div class="co-field"><label>Name on Card</label><input type="text" id="co-cardname" placeholder="Jane Smith"></div></div>
             </div>
-
-            <div id="paypal-fields" style="display:none; text-align:center; padding: 1.5rem 0; color: var(--text-muted); font-size:0.9rem;">
-              🅿️ You'll be redirected to PayPal to complete your payment securely.
-            </div>
-
-            <div id="apple-fields" style="display:none; text-align:center; padding: 1.5rem 0; color: var(--text-muted); font-size:0.9rem;">
-              🍎 Tap "Place Order" to authenticate with Apple Pay.
-            </div>
-
-            <div class="secure-badge">
-              🔒 Your payment is encrypted with 256-bit SSL. We never store your card details.
-            </div>
+            <div id="paypal-fields" style="display:none; text-align:center; padding: 1.5rem 0; color: var(--text-muted); font-size:0.9rem;">🅿️ You'll be redirected to PayPal to complete your payment securely.</div>
+            <div id="apple-fields" style="display:none; text-align:center; padding: 1.5rem 0; color: var(--text-muted); font-size:0.9rem;">🍎 Tap "Place Order" to authenticate with Apple Pay.</div>
+            <div class="secure-badge">🔒 Your payment is encrypted with 256-bit SSL. We never store your card details.</div>
           </div>
         </div>
+      </div>
 
-      </div><!-- end checkout-left -->
-
-      <!-- RIGHT: ORDER SUMMARY -->
       <div class="order-summary">
         <div class="order-summary-header">🧺 Order Summary</div>
         <div class="order-summary-items" id="co-summary-items"></div>
@@ -2177,11 +1352,9 @@
           <span class="co-trust-item">🌱 Eco-packed</span>
         </div>
       </div>
+    </div>
+  </div>
 
-    </div><!-- end checkout-body -->
-  </div><!-- end checkout-form-view -->
-
-  <!-- CONFIRMATION VIEW -->
   <div id="checkout-confirm-view" style="display:none;" class="checkout-page">
     <div class="confirmation-wrap">
       <div class="confirmation-icon">✅</div>
@@ -2193,37 +1366,37 @@
         <div class="conf-row"><span>Delivery</span><span id="conf-delivery">Standard (3–5 days)</span></div>
         <div class="conf-row"><span>Total Charged</span><span id="conf-total">$0.00</span></div>
       </div>
-      <button class="btn-primary" onclick="showPage('shop')" style="margin-right:0.75rem">Continue Shopping</button>
-      <button class="btn-secondary" onclick="showPage('home')" style="color:var(--text);border-color:var(--border)">Back to Home</button>
+      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;justify-content:center;">
+        <button class="btn-primary" onclick="showPage('shop')">Continue Shopping</button>
+        <button class="btn-secondary" onclick="showPage('home')" style="color:var(--text);border-color:var(--border)">Back to Home</button>
+      </div>
     </div>
   </div>
 </div>
 
-
 <footer>
   <div class="footer-logo">UglyRipe 🍋</div>
-  <p>Fighting food waste, one imperfect piece of produce at a time.<br>
-  Made with 💚 in Toronto, Canada</p>
+  <p>Fighting food waste, one imperfect piece of produce at a time.<br>Made with 💚 in Toronto, Canada</p>
 </footer>
 
 <script>
-// ─── DATA ───
 let products = [
-  { id: 1, name: "Carrots", emoji: "🥕", desc: "Crooked, forked, and spiral-shaped carrots bursting with sweetness. 1 kg bundle.", price: 2.49, origPrice: 4.99, tag: "50% OFF · Crunchy", soldOut: false },
-  { id: 2, name: "Lemons", emoji: "🍋", desc: "Bumpy-skinned lemons with plenty of juice. Sometimes two grew into one!", price: 2.99, origPrice: 5.99, tag: "50% OFF · Juicy", soldOut: false },
-  { id: 3, name: "Tomatoes", emoji: "🍅", desc: "Deeply ribbed and wonderfully irregular tomatoes — incredible roasted or raw.", price: 3.49, origPrice: 5.49, tag: "36% OFF · Fresh", soldOut: false },
-  { id: 4, name: "Bell Peppers", emoji: "🫑", desc: "Spiral-grown and oddly beautiful peppers in red, yellow & green. Mixed bag.", price: 4.49, origPrice: 7.99, tag: "44% OFF · Vibrant", soldOut: false },
-  { id: 5, name: "Zucchini", emoji: "🥒", desc: "Curved and knobbly zucchini, picked young and tender. Great for grilling.", price: 2.99, origPrice: 4.99, tag: "40% OFF · Tender", soldOut: false },
-  { id: 6, name: "Apples", emoji: "🍎", desc: "Dented, russet-patched, small or two-toned apples. Delicious crunch guaranteed.", price: 3.99, origPrice: 8.99, tag: "55% OFF · Crisp", soldOut: false },
-  { id: 7, name: "Eggplant", emoji: "🍆", desc: "Conjoined, stubby, and striped varieties — same silky flavour you love.", price: 3.49, origPrice: 6.99, tag: "50% OFF · Silky", soldOut: true },
-  { id: 8, name: "Ginger Root", emoji: "🫚", desc: "Extra gnarly ginger with intense aromatics. Perfect for tea, curries, and stir-fries.", price: 1.99, origPrice: 3.99, tag: "50% OFF · Spicy", soldOut: false },
+  { id:1, name:"Carrots", emoji:"🥕", desc:"Crooked, forked, and spiral-shaped carrots bursting with sweetness. 1 kg bundle.", price:2.49, origPrice:4.99, tag:"50% OFF · Crunchy", soldOut:false },
+  { id:2, name:"Lemons", emoji:"🍋", desc:"Bumpy-skinned lemons with plenty of juice. Sometimes two grew into one!", price:2.99, origPrice:5.99, tag:"50% OFF · Juicy", soldOut:false },
+  { id:3, name:"Tomatoes", emoji:"🍅", desc:"Deeply ribbed and wonderfully irregular tomatoes — incredible roasted or raw.", price:3.49, origPrice:5.49, tag:"36% OFF · Fresh", soldOut:false },
+  { id:4, name:"Bell Peppers", emoji:"🫑", desc:"Spiral-grown and oddly beautiful peppers in red, yellow & green. Mixed bag.", price:4.49, origPrice:7.99, tag:"44% OFF · Vibrant", soldOut:false },
+  { id:5, name:"Zucchini", emoji:"🥒", desc:"Curved and knobbly zucchini, picked young and tender. Great for grilling.", price:2.99, origPrice:4.99, tag:"40% OFF · Tender", soldOut:false },
+  { id:6, name:"Apples", emoji:"🍎", desc:"Dented, russet-patched, small or two-toned apples. Delicious crunch guaranteed.", price:3.99, origPrice:8.99, tag:"55% OFF · Crisp", soldOut:false },
+  { id:7, name:"Eggplant", emoji:"🍆", desc:"Conjoined, stubby, and striped varieties — same silky flavour you love.", price:3.49, origPrice:6.99, tag:"50% OFF · Silky", soldOut:true },
+  { id:8, name:"Ginger Root", emoji:"🫚", desc:"Extra gnarly ginger with intense aromatics. Perfect for tea, curries, and stir-fries.", price:1.99, origPrice:3.99, tag:"50% OFF · Spicy", soldOut:false },
 ];
 
 let cart = [];
 let nextId = 9;
-let isAdminLoggedIn = false;
+let deliveryCost = 0;
+let promoApplied = false;
 
-// ─── NAVIGATION ───
+// ─── NAV ───
 function showPage(page) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + page).classList.add('active');
@@ -2240,6 +1413,18 @@ function switchTab(tab, el) {
   document.getElementById('tab-mystery').style.display = tab === 'mystery' ? 'block' : 'none';
 }
 
+function toggleMobileMenu() {
+  const drawer = document.getElementById('mobile-nav-drawer');
+  const btn = document.getElementById('hamburger-btn');
+  drawer.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+
+function closeMobileMenu() {
+  document.getElementById('mobile-nav-drawer').classList.remove('open');
+  document.getElementById('hamburger-btn').classList.remove('open');
+}
+
 // ─── RENDER PRODUCTS ───
 function renderProducts() {
   const grid = document.getElementById('products-grid');
@@ -2249,10 +1434,14 @@ function renderProducts() {
     card.className = 'product-card' + (p.soldOut ? ' sold-out' : '');
     card.innerHTML = `
       ${p.soldOut ? '<div class="sold-out-banner">Sold Out</div>' : ''}
-      <div class="product-img-area" data-tag="${p.tag}">${p.emoji}</div>
+      <div class="product-img-area">
+        ${p.emoji}
+      </div>
       <div class="product-info">
-        <div class="product-name">${p.name}</div>
-        <div class="product-desc">${p.desc}</div>
+        <div>
+          <div class="product-name">${p.name}</div>
+          <div class="product-desc">${p.desc}</div>
+        </div>
         <div class="product-pricing">
           <div class="price-group">
             <span class="price-now">$${p.price.toFixed(2)}</span>
@@ -2283,14 +1472,7 @@ function addToCart(id) {
 }
 
 function addMysteryBox(size, price) {
-  const emojis = { Small: '📦', Medium: '📦', Large: '📦' };
-  cart.push({
-    id: 'mystery-' + size,
-    cartId: Date.now() + Math.random(),
-    name: `Mystery Box (${size})`,
-    emoji: emojis[size],
-    price: price
-  });
+  cart.push({ id: 'mystery-' + size, cartId: Date.now() + Math.random(), name: `Mystery Box (${size})`, emoji: '📦', price });
   updateCart();
   showToast(`📦 ${size} Mystery Box added to basket!`);
 }
@@ -2303,13 +1485,28 @@ function removeFromCart(cartId) {
 function updateCart() {
   const count = cart.length;
   document.getElementById('cart-count').textContent = count;
+  document.getElementById('cart-count-mobile').textContent = count;
+
   const total = cart.reduce((s, i) => s + i.price, 0);
+  const origTotal = cart.reduce((s, i) => s + (i.origPrice || i.price), 0);
+  const saved = origTotal - total;
+
   document.getElementById('cart-total').textContent = '$' + total.toFixed(2);
+
+  const savingsEl = document.getElementById('cart-savings');
+  if (cart.length > 0 && saved > 0.01) {
+    savingsEl.style.display = 'block';
+    savingsEl.textContent = `🎉 You're saving $${saved.toFixed(2)} vs retail!`;
+  } else {
+    savingsEl.style.display = 'none';
+  }
+
   const itemsEl = document.getElementById('cart-items');
   if (cart.length === 0) {
     itemsEl.innerHTML = '<div class="cart-empty"><div class="cart-empty-emoji">🥕</div><p>Your basket is empty.<br>Add some wonky produce!</p></div>';
     return;
   }
+
   itemsEl.innerHTML = cart.map(item => `
     <div class="cart-item">
       <span class="cart-item-emoji">${item.emoji}</span>
@@ -2324,21 +1521,15 @@ function updateCart() {
 
 function checkout() {
   if (cart.length === 0) { showToast('Your basket is empty!'); return; }
-  // Close cart panel and go to checkout page
   document.getElementById('cart-overlay').classList.remove('open');
   document.getElementById('cart-panel').classList.remove('open');
   showPage('checkout');
   renderCheckoutSummary();
 }
 
-let deliveryCost = 0;
-let promoApplied = false;
-
 function renderCheckoutSummary() {
-  // Show form, hide confirmation
   document.getElementById('checkout-form-view').style.display = 'block';
   document.getElementById('checkout-confirm-view').style.display = 'none';
-
   const items = document.getElementById('co-summary-items');
   items.innerHTML = cart.map(item => `
     <div class="summary-item">
@@ -2414,11 +1605,7 @@ function placeOrder() {
   const fname = document.getElementById('co-fname').value.trim();
   const email = document.getElementById('co-email').value.trim();
   const address = document.getElementById('co-address').value.trim();
-
-  if (!fname || !email || !address) {
-    showToast('⚠️ Please fill in your name, email, and address.');
-    return;
-  }
+  if (!fname || !email || !address) { showToast('⚠️ Please fill in your name, email, and address.'); return; }
 
   const subtotal = cart.reduce((s, i) => s + i.price, 0);
   const discount = promoApplied ? subtotal * 0.1 : 0;
@@ -2432,7 +1619,6 @@ function placeOrder() {
   document.getElementById('conf-delivery').textContent = deliveryLabels[deliveryCost] || 'Standard';
   document.getElementById('conf-total').textContent = '$' + grand.toFixed(2);
 
-  // Clear cart
   cart = [];
   promoApplied = false;
   deliveryCost = 0;
@@ -2441,87 +1627,6 @@ function placeOrder() {
   document.getElementById('checkout-form-view').style.display = 'none';
   document.getElementById('checkout-confirm-view').style.display = 'block';
   window.scrollTo(0, 0);
-}
-
-// ─── ADMIN ───
-function adminLogin() {
-  const pass = document.getElementById('admin-password').value;
-  if (pass === 'uglyripe2024') {
-    isAdminLoggedIn = true;
-    document.getElementById('admin-login-wrap').style.display = 'none';
-    document.getElementById('admin-panel-wrap').style.display = 'block';
-    renderAdminList();
-  } else {
-    document.getElementById('login-error').style.display = 'block';
-  }
-}
-
-function adminLogout() {
-  isAdminLoggedIn = false;
-  document.getElementById('admin-login-wrap').style.display = 'flex';
-  document.getElementById('admin-panel-wrap').style.display = 'none';
-  document.getElementById('admin-password').value = '';
-}
-
-function renderAdminList() {
-  const list = document.getElementById('admin-product-list');
-  list.innerHTML = products.map(p => `
-    <div class="admin-product-item">
-      <span class="item-emoji">${p.emoji}</span>
-      <div class="item-info">
-        <div class="item-name">${p.name}</div>
-        <span class="item-status ${p.soldOut ? 'status-soldout' : 'status-available'}">${p.soldOut ? 'Sold Out' : 'Available'}</span>
-      </div>
-      <div class="admin-actions">
-        <button class="action-btn toggle-btn" onclick="toggleSoldOut(${p.id})">${p.soldOut ? 'Restock' : 'Mark Out'}</button>
-        <button class="action-btn delete-btn" onclick="deleteProduct(${p.id})">Delete</button>
-      </div>
-    </div>
-  `).join('');
-}
-
-function toggleSoldOut(id) {
-  const p = products.find(p => p.id === id);
-  if (p) {
-    p.soldOut = !p.soldOut;
-    renderAdminList();
-    renderProducts();
-    showToast(`${p.emoji} ${p.name} marked as ${p.soldOut ? 'Sold Out' : 'Available'}`);
-  }
-}
-
-function deleteProduct(id) {
-  const p = products.find(p => p.id === id);
-  if (!p) return;
-  if (!confirm(`Delete "${p.name}"? This cannot be undone.`)) return;
-  products = products.filter(p => p.id !== id);
-  renderAdminList();
-  renderProducts();
-  showToast(`🗑️ "${p.name}" removed from shop`);
-}
-
-function addProduct() {
-  const name = document.getElementById('new-name').value.trim();
-  const emoji = document.getElementById('new-emoji').value.trim() || '🍀';
-  const desc = document.getElementById('new-desc').value.trim();
-  const price = parseFloat(document.getElementById('new-price').value);
-  const origPrice = parseFloat(document.getElementById('new-orig-price').value);
-  const tag = document.getElementById('new-tag').value.trim();
-
-  if (!name || isNaN(price) || isNaN(origPrice)) {
-    showToast('⚠️ Please fill in Name, Sale Price, and Original Price.');
-    return;
-  }
-
-  products.push({ id: nextId++, name, emoji, desc, price, origPrice, tag: tag || 'NEW', soldOut: false });
-  renderAdminList();
-  renderProducts();
-
-  // Clear form
-  ['new-name','new-emoji','new-desc','new-price','new-orig-price','new-tag'].forEach(id => {
-    document.getElementById(id).value = '';
-  });
-  showToast(`${emoji} "${name}" added to the shop!`);
 }
 
 // ─── TOAST ───
